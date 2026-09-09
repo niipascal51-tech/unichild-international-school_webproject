@@ -6,11 +6,11 @@
 
 # Team Name: DevForge
 
-# Project Working Title: Unichild International School Webapp Development
+Project Working Title: Unichild International School Webapp Development
 
-# Tagline: “Code with Purpose, Build with Impact.”
+Tagline: “Code with Purpose, Build with Impact.”
 
-# Contents: Part A – Team Identity | Part B – Team Operating Agreement | Part C – Client and Problem Intake | Part D – Repository and Platform Setup | Part E – AI Contracts
+Contents: Part A – Team Identity | Part B – Team Operating Agreement | Part C – Client and Problem Intake | Part D – Repository and Platform Setup | Part E – AI Contracts
 
 ## D0-A: Team Identity
 

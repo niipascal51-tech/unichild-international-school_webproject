@@ -1,33 +1,32 @@
 # Team Information
 
-## Project title
+## Project title : Unichild International School Webapp
 
 <!-- Insert project title -->
 
-## Team name
+## Team name : DEVFORGE
 
 <!-- Insert team name -->
 
 ## Client
 
-- Client name:
-- Organization/business:
-- Client contact person:
-- Client contact method:
-- Intended users:
+- Client name: Phyllis Arthur
+- Organization/business: Unichild International school                                    
+- Client contact person: Eric Osei-Bonsu Omari 
+- Client contact method: WhatApp/Call
+- Intended users: Staff, Students, Parents
 
 ## Team members
 
 | # | Name | Student ID | GitHub username | Email | Main role | Backup role |
 |---|------|------------|-----------------|-------|-----------|-------------|
-| 1 |      |            |                 |       | Product/Client Manager | |
-| 2 |      |            |                 |       | Architecture & Context Lead | |
-| 3 |      |            |                 |       | Implementer | |
-| 4 |      |            |                 |       | Implementer | |
-| 5 |      |            |                 |       | Implementer | |
-| 6 |      |            |                 |       | Validation/QA Lead | |
-| 7 |      |            |                 |       | DevOps/Release & Documentation Lead | |
-
+|1  |Eric Osei-Bonsu Omari      |22325477            | eric-oseibonsu-omari                 |eoomari001@st.ug.edu.gh       | Product/Client Manager | Content Liason |
+| 2 |Douglas Ankomah Tetteh      |22310347             | BrainTec1                |tettehdouglas43@gamail.com       | Architecture & Context Lead |Project Manager |
+| 3 |Nicholas Yaw Wilson       | 22401962            |  009Nicholas  | yawwilsonnicholas@gmail.com      | Implementer |UI/UX Design |
+| 4 |Pascal Nii Tettey Odonkor      |22411168            |  niipascal51-tech  |pascalniitetteyodonkor@gmail.com       | Implementer | Repository Manager |
+| 5 |Bright Dadzie       |  22414604           | Brightdevscoder                 |Dadziekwame130@gmail.com   | Implementer |Frontend Developer |
+| 6 |Samuel Awusi      |22397900       |  sammukis134      |samuelawusi17@gmail.com       | Validation/QA Lead | System Review  |
+| 7 |Boahen Kwabena  | 22377386           | boahentech                 | boahenkwabena8@gmail.com       | DevOps/Release & Documentation Lead |System Research  |
 ## Team agreement
 
 ### Communication channels

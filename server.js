@@ -10,6 +10,9 @@ app.use(express.json());
 const authRoutes = require('./src/routes/authRoutes');
 app.use('/api/auth', authRoutes);
 
+const studentRoutes = require('./src/routes/studentRoutes');
+app.use('/api/students', studentRoutes);
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running' });
 });

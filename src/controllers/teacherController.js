@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const { sequelize, User, Teacher } = require('../models');
 
-const withUser = [{ model: User, attributes: ['name', 'email'] }];
+const withUser = [{ model: User, attributes: ['name', 'email', 'isActive'] }];
 
 const createTeacher = async (req, res) => {
   try {
@@ -88,4 +88,22 @@ const updateTeacher = async (req, res) => {
   }
 };
 
-module.exports = { createTeacher, listTeachers, getTeacher, getMyProfile, updateTeacher };
+   const setTeacherActive = async (req, res) => {
+     try {
+       const teacher = await Teacher.findByPk(req.params.id);
+       if (!teacher) return res.status(404).json({ message: 'Teacher not found' });
+
+       const isActive = req.body.isActive === true || req.body.isActive === 'true';
+       await User.update({ isActive }, { where: { id: teacher.userId } });
+
+       res.json({
+         id: teacher.id,
+         isActive,
+         message: isActive ? 'Teacher reactivated' : 'Teacher deactivated',
+       });
+     } catch (error) {
+       res.status(500).json({ message: 'Could not change teacher status' });
+     }
+   };
+
+   module.exports = { createTeacher, listTeachers, getTeacher, getMyProfile, updateTeacher, setTeacherActive };

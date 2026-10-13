@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const c = require('../controllers/studentController');
 const { authenticate, authorize } = require('../middleware/auth');
+const { CLASSES } = require('../utils/classes');
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
@@ -21,7 +22,7 @@ router.post(
     body('lastName').notEmpty(),
     body('dateOfBirth').isISO8601(),
     body('gender').isIn(['male', 'female']),
-    body('className').notEmpty(),
+    body('className').isIn(CLASSES),
     body('guardianName').notEmpty(),
     body('guardianPhone').notEmpty(),
     validate,
@@ -31,7 +32,30 @@ router.post(
 
 router.get('/', authorize('admin', 'teacher'), c.listStudents);
 router.get('/:id', authorize('admin', 'teacher', 'student'), c.getStudent);
+
+router.patch(
+  '/:id',
+  authorize('admin'),
+  [
+    body('firstName').optional().notEmpty(),
+    body('lastName').optional().notEmpty(),
+    body('dateOfBirth').optional().isISO8601(),
+    body('gender').optional().isIn(['male', 'female']),
+    body('className').optional().isIn(CLASSES),
+    body('guardianName').optional().notEmpty(),
+    body('guardianPhone').optional().notEmpty(),
+    validate,
+  ],
+  c.updateStudent
+);
+
 router.patch('/:id/admit', authorize('admin'), c.admitStudent);
+router.patch(
+  '/:id/active',
+  authorize('admin'),
+  [body('isActive').isBoolean(), validate],
+  c.setStudentActive
+);
 router.post(
   '/:id/account',
   authorize('admin'),

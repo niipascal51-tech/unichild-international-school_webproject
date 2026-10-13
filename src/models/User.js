@@ -16,6 +16,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     defaultValue: 'student',
   },
+    isActive: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
 }, { tableName: 'users' });
 
 module.exports = User;

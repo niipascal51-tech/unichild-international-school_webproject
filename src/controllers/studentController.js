@@ -1,6 +1,11 @@
 const bcrypt = require('bcryptjs');
 const { sequelize, User, Student, Teacher } = require('../models');
 
+const EDITABLE = [
+  'firstName', 'lastName', 'dateOfBirth', 'gender',
+  'className', 'guardianName', 'guardianPhone', 'address',
+];
+
 const registerStudent = async (req, res) => {
   try {
     const { firstName, lastName, dateOfBirth, gender, className,
@@ -70,6 +75,9 @@ const listStudents = async (req, res) => {
   try {
     const where = {};
     if (req.query.status) where.status = req.query.status;
+    if (!(req.user.role === 'admin' && req.query.includeInactive === 'true')) {
+      where.isActive = true;
+    }
 
     if (req.user.role === 'teacher') {
       const teacher = await Teacher.findOne({ where: { userId: req.user.id } });
@@ -126,8 +134,56 @@ const getStudent = async (req, res) => {
   }
 };
 
+const updateStudent = async (req, res) => {
+  try {
+    const student = await Student.findByPk(req.params.id);
+    if (!student) return res.status(404).json({ message: 'Student not found' });
+
+    const changes = {};
+    EDITABLE.forEach((field) => {
+      if (req.body[field] !== undefined) changes[field] = req.body[field];
+    });
+
+    await sequelize.transaction(async (t) => {
+      await student.update(changes, { transaction: t });
+      if (student.userId && (changes.firstName || changes.lastName)) {
+        await User.update(
+          { name: `${student.firstName} ${student.lastName}` },
+          { where: { id: student.userId }, transaction: t }
+        );
+      }
+    });
+
+    res.json(student);
+  } catch (error) {
+    res.status(500).json({ message: 'Could not update student' });
+  }
+};
+
+const setStudentActive = async (req, res) => {
+  try {
+    const student = await Student.findByPk(req.params.id);
+    if (!student) return res.status(404).json({ message: 'Student not found' });
+
+    const isActive = req.body.isActive === true || req.body.isActive === 'true';
+    await sequelize.transaction(async (t) => {
+      await student.update({ isActive }, { transaction: t });
+      if (student.userId) {
+        await User.update({ isActive }, { where: { id: student.userId }, transaction: t });
+      }
+    });
+
+    res.json({
+      id: student.id,
+      isActive,
+      message: isActive ? 'Student reactivated' : 'Student deactivated',
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Could not change student status' });
+  }
+};
 
 module.exports = {
-  registerStudent, admitStudent, createStudentAccount,
-  listStudents, getMyProfile, getStudent,
+  registerStudent, admitStudent, createStudentAccount, listStudents,
+  getMyProfile, getStudent, updateStudent, setStudentActive,
 };

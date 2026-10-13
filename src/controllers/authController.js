@@ -25,6 +25,9 @@ const login = async (req, res) => {
     const user = await User.findOne({ where: { email } });
     const valid = user && (await bcrypt.compare(password, user.password));
     if (!valid) return res.status(401).json({ message: 'Invalid email or password' });
+    if (!user.isActive) {
+      return res.status(403).json({ message: 'Account deactivated. Contact the administrator.' });
+    }
 
     const token = jwt.sign(
       { id: user.id, role: user.role },

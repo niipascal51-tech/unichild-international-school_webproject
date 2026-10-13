@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const c = require('../controllers/teacherController');
 const { authenticate, authorize } = require('../middleware/auth');
+const { CLASSES } = require('../utils/classes');
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
@@ -23,6 +24,7 @@ router.post(
     body('phone').notEmpty(),
     body('subjects').optional().isArray(),
     body('assignedClasses').optional().isArray(),
+    body('assignedClasses.*').isIn(CLASSES),
     validate,
   ],
   c.createTeacher
@@ -37,9 +39,17 @@ router.patch(
   [
     body('subjects').optional().isArray(),
     body('assignedClasses').optional().isArray(),
+    body('assignedClasses.*').isIn(CLASSES),
     validate,
   ],
   c.updateTeacher
 );
+
+   router.patch(
+     '/:id/active',
+     authorize('admin'),
+     [body('isActive').isBoolean(), validate],
+     c.setTeacherActive
+   );
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const { sequelize, User, Student } = require('../models');
+const { sequelize, User, Student, Teacher } = require('../models');
 
 const registerStudent = async (req, res) => {
   try {
@@ -69,8 +69,25 @@ const createStudentAccount = async (req, res) => {
 const listStudents = async (req, res) => {
   try {
     const where = {};
-    if (req.query.className) where.className = req.query.className;
     if (req.query.status) where.status = req.query.status;
+
+    if (req.user.role === 'teacher') {
+      const teacher = await Teacher.findOne({ where: { userId: req.user.id } });
+      const assigned = teacher ? teacher.assignedClasses : [];
+      if (assigned.length === 0) return res.json([]);
+
+      if (req.query.className) {
+        if (!assigned.includes(req.query.className)) {
+          return res.status(403).json({ message: 'Class not assigned to you' });
+        }
+        where.className = req.query.className;
+      } else {
+        where.className = assigned;
+      }
+    } else if (req.query.className) {
+      where.className = req.query.className;
+    }
+
     const students = await Student.findAll({ where, order: [['lastName', 'ASC']] });
     res.json(students);
   } catch (error) {
@@ -92,14 +109,23 @@ const getStudent = async (req, res) => {
   try {
     const student = await Student.findByPk(req.params.id);
     if (!student) return res.status(404).json({ message: 'Student not found' });
+
     if (req.user.role === 'student' && student.userId !== req.user.id) {
       return res.status(403).json({ message: 'Access denied' });
     }
+    if (req.user.role === 'teacher') {
+      const teacher = await Teacher.findOne({ where: { userId: req.user.id } });
+      if (!teacher || !teacher.assignedClasses.includes(student.className)) {
+        return res.status(403).json({ message: 'Access denied' });
+      }
+    }
+
     res.json(student);
   } catch (error) {
     res.status(500).json({ message: 'Could not fetch student' });
   }
 };
+
 
 module.exports = {
   registerStudent, admitStudent, createStudentAccount,

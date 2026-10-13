@@ -13,6 +13,9 @@ app.use('/api/auth', authRoutes);
 const studentRoutes = require('./src/routes/studentRoutes');
 app.use('/api/students', studentRoutes);
 
+const teacherRoutes = require('./src/routes/teacherRoutes');
+app.use('/api/teachers', teacherRoutes);
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running' });
 });

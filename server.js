@@ -19,6 +19,9 @@ app.use('/api/teachers', teacherRoutes);
 const resultRoutes = require('./src/routes/resultRoutes');
 app.use('/api/results', resultRoutes);
 
+const feeRoutes = require('./src/routes/feeRoutes');
+app.use('/api/fees', feeRoutes);
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running' });
 });

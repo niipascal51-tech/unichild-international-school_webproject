@@ -3,6 +3,7 @@ const User = require('./User');
 const Student = require('./Student');
 const Teacher = require('./Teacher');
 const Result = require('./Result');
+const Fee = require('./Fee');
 
 User.hasOne(Student, { foreignKey: 'userId' });
 Student.belongsTo(User, { foreignKey: 'userId' });
@@ -13,4 +14,7 @@ Teacher.belongsTo(User, { foreignKey: 'userId' });
 Student.hasMany(Result, { foreignKey: 'studentId' });
 Result.belongsTo(Student, { foreignKey: 'studentId' });
 
-module.exports = { sequelize, User, Student, Teacher, Result };
+Student.hasMany(Fee, { foreignKey: 'studentId' });
+Fee.belongsTo(Student, { foreignKey: 'studentId' });
+
+module.exports = { sequelize, User, Student, Teacher, Result, Fee };

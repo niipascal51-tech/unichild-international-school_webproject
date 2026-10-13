@@ -22,6 +22,15 @@ app.use('/api/results', resultRoutes);
 const feeRoutes = require('./src/routes/feeRoutes');
 app.use('/api/fees', feeRoutes);
 
+const postRoutes = require('./src/routes/postRoutes');
+const eventRoutes = require('./src/routes/eventRoutes');
+const contentRoutes = require('./src/routes/contentRoutes');
+
+app.use('/api/news', postRoutes('news'));
+app.use('/api/announcements', postRoutes('announcement'));
+app.use('/api/events', eventRoutes);
+app.use('/api/content', contentRoutes);
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running' });
 });

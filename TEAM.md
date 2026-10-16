@@ -65,6 +65,15 @@ each meeting so that everyone understands their responsibilities.
 ### Work division
 
 Explain how the team will assign, review, and complete work.
+
+Work Assignment: The Project Manager will coordinate task allocation based on each member's role, skills, and availability. Every task must have a clear description, an assigned owner, an agreed deadline, and expected deliverables. Tasks will be tracked using GitHub Issues or another team-approved method.
+
+Work Review: Members will submit completed work for review through GitHub pull requests or the agreed submission channel. The assigned reviewer will check the work for accuracy, quality, completeness, and compliance with project requirements. UI/UX designs will be reviewed for usability and consistency, while code will be checked for functionality and testing. Feedback must be addressed before approval.
+
+Work Completion: A task will be considered complete only when its deliverables have been submitted, reviewed, and approved, and any required corrections have been made. Approved code or documentation will be merged into the appropriate branch, and the task status will be updated. Members must communicate delays early and provide progress updates to help the team meet its deadlines.
+
+General rule: Every member is responsible for completing assigned tasks on time, maintaining clear documentation, responding to feedback, and ensuring that their contributions meet the team's agreed standards. The team will monitor progress regularly and address outstanding tasks promptly to prevent delays to the overall project.
+
 Tasks will be assigned according to each member's role, skills,
 availability, and the project's requirements.
 
@@ -126,8 +135,19 @@ Every member is responsible for following these rules, keeping their work organi
 ### Academic integrity and AI rules
 
 Explain how the team will prevent freeloading, plagiarism, dishonest AI use, and unexplained work.
+
 AI tools may be used to support research, brainstorming, documentation,
 design exploration, and development where appropriate.
+
+Preventing freeloading: Each team member will be assigned specific tasks with clear deadlines and expected deliverables. Progress will be monitored through GitHub Issues, commits, pull requests, meeting updates, and submitted work. Members who consistently fail to contribute will be contacted and held accountable.
+
+Preventing plagiarism: All members must produce original work, acknowledge external sources, and provide proper citations where necessary. Submitted work will be reviewed for copied content, and any suspected plagiarism will be investigated before appropriate action is taken.
+
+Preventing dishonest AI use: AI tools may be used to support research, design, documentation, and development, but members must review, understand, and verify their outputs. No member should present AI-generated content as independently completed work when disclosure is required, submit fabricated information, or use AI to misrepresent their contribution. All AI use must comply with the university's academic integrity requirements.
+
+Preventing unexplained work: Every contribution must have a clear purpose and relate to an assigned task or approved project requirement. Members should document significant decisions, explain their changes in commit messages and pull requests, and provide supporting evidence where necessary. Work that cannot be adequately explained or verified will be returned for clarification and review before acceptance.
+
+General rule: Every member is responsible for ensuring that their contributions are original, verifiable, relevant to the project, and completed honestly. Concerns will be documented and addressed fairly, with serious or repeated violations escalated to the lecturer when necessary.
 
 However, team members must review, understand, and verify AI-generated
 content before using it in the project.
@@ -144,16 +164,6 @@ requirements and the project's agreed standards.
 ### Conflict resolution
 
 Explain what happens if a member fails to attend, fails to contribute, submits dishonest work, or blocks progress.
-
-Preventing freeloading: Each team member will be assigned specific tasks with clear deadlines and expected deliverables. Progress will be monitored through GitHub Issues, commits, pull requests, meeting updates, and submitted work. Members who consistently fail to contribute will be contacted and held accountable.
-
-Preventing plagiarism: All members must produce original work, acknowledge external sources, and provide proper citations where necessary. Submitted work will be reviewed for copied content, and any suspected plagiarism will be investigated before appropriate action is taken.
-
-Preventing dishonest AI use: AI tools may be used to support research, design, documentation, and development, but members must review, understand, and verify their outputs. No member should present AI-generated content as independently completed work when disclosure is required, submit fabricated information, or use AI to misrepresent their contribution. All AI use must comply with the university's academic integrity requirements.
-
-Preventing unexplained work: Every contribution must have a clear purpose and relate to an assigned task or approved project requirement. Members should document significant decisions, explain their changes in commit messages and pull requests, and provide supporting evidence where necessary. Work that cannot be adequately explained or verified will be returned for clarification and review before acceptance.
-
-General rule: Every member is responsible for ensuring that their contributions are original, verifiable, relevant to the project, and completed honestly. Concerns will be documented and addressed fairly, with serious or repeated violations escalated to the lecturer when necessary.
 
 Failure to attend: Members who miss scheduled meetings without prior notice or a valid reason will be contacted by the Project Manager to explain their absence. Repeated unexplained absences will be documented and discussed with the team for appropriate action.
 

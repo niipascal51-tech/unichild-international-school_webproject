@@ -43,3 +43,6 @@ coverage/
 .flutter-plugins
 .flutter-plugins-dependencies
 .dart_tool/
+
+# Local test scripts and fixtures
+tests/

@@ -8,7 +8,7 @@ Every significant AI-assisted contribution must be recorded here.
 
 | Date | Student | Tool Used | Prompt/Task Summary | Output Used? | Verification Performed | Related Issue/PR |
 |---|---|---|---|---|---|---|
-| [Enter actual date] | BOAHEN KWABENA (`boahentech`) | ChatGPT | Assistance with drafting and organizing `AI_USAGE.md`, including responsible AI-use principles, confidentiality guidelines, and academic integrity rules. | Yes | The student must review the declaration, confirm that it accurately represents the team's policies, and correct any inaccurate statements before submission. | N/A unless a related issue or PR exists |
+| [September 2, 2026] | BOAHEN KWABENA (`boahentech`) | ChatGPT | Assistance with drafting and organizing `AI_USAGE.md`, including responsible AI-use principles, confidentiality guidelines, and academic integrity rules. | Yes | The student must review the declaration, confirm that it accurately represents the team's policies, and correct any inaccurate statements before submission. | N/A unless a related issue or PR exists |
 
 ## Rules
 

@@ -57,7 +57,7 @@ Significant AI assistance will be recorded in this file throughout the project.
 
 | Date       | Team Member | AI Tool | Purpose        | Output Used? | Verification/Modification              |
 | ---------- | ----------- | ------- | -------------- | ------------ | -------------------------------------- |
-| YYYY-MM-DD | Name        | AI tool | Purpose of use | Yes/No       | How the output was checked or modified |
+| 2026-10-19 | Nicholas Yaw Wilson        | Claude | Purpose of use | Yes/No       | How the output was checked or modified |
 
 The table will be updated whenever significant AI assistance is used during the project.
 

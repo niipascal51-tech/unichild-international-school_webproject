@@ -36,7 +36,8 @@ const A={
   cls:el=>{sessionStorage.setItem('cls',el.value);route()},
   admit:async el=>{await api(`/students/${el.dataset.id}/admit`,{method:'PATCH'});toast('Student admitted');route()},
   acct:async el=>{
-    const email=prompt('Student login email'),password=prompt('Password (min 8 characters)');
+    const email=prompt('Student login email');
+    const password=prompt('Password (min 8 characters)');
     if(email&&password){await api(`/students/${el.dataset.id}/account`,{method:'POST',body:{email,password}});toast('Login created');route()}
   },
   pub:async el=>{const s=el.closest('tr').children[1].textContent;await api('/news/'+el.dataset.id,{method:'PATCH',body:{status:s==='draft'?'published':'draft'}});route()},

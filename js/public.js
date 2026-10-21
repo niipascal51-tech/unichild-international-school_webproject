@@ -7,7 +7,7 @@ const shell=h=>`<div class="strip"><span>+233 244 891 066 · Unichildschool11@gm
 <footer class="foot"><div><div class="logo">UNICHILD</div><p>Nurturing global citizens equipped with academic mastery and outstanding character.</p></div>
 <div><h3>Academics</h3><a href="#/academics">Creche and Nursery</a><a href="#/academics">Kindergarten</a><a href="#/academics">Primary School</a><a href="#/academics">Junior High School</a></div>
 <div><h3>Quick links</h3><a href="#/about">About Us</a><a href="#/admissions">Admissions</a><a href="#/news">News and Blog</a><a href="#/gallery">Photo Gallery</a></div>
-<div><h3>Contact</h3><p>IH41 Bletse St. GW-0926-5269, Accra, Ghana<br>+233 244 891 066 / +233 501 234 567<br>Unichildschool11@gmail.com</p></div></footer>
+<div><h3>Contact</h3><p>JPRF+JJ2 Unichild International School, Sowutoum, Accra, Ghana<br>+233 244 891 066 / +233 501 234 567<br>Unichildschool11@gmail.com</p><a href="https://maps.app.goo.gl/bRkfAQMwGThSGzYW8?g_st=aw" target="_blank" rel="noopener noreferrer">Open location in Google Maps</a></div></footer>
 <a class="wa" href="https://wa.me/233244891066">Admissions WhatsApp</a>`;
 
 const hero=(t,s,tag)=>`<section class="hero img">${tag?`<small>${tag}</small>`:''}<h1>${t}</h1>${s?`<p>${s}</p>`:''}</section>`;
@@ -76,7 +76,7 @@ async function pub(p){
     +`<div class="wrap two"><form data-h="enquiry" class="card"><h3>Send us a message</h3><label>Full name</label><input name="name" required><label>Email address</label><input name="email" type="email" required>
     <label>Phone number</label><input name="phone" placeholder="+233 244 891 066"><label>Subject</label><select name="subject"><option>Admissions and Placement</option><option>Fees and Billing</option><option>Academics</option><option>General Enquiry</option></select>
     <label>Your message (10 to 2000 characters)</label><textarea name="message" rows="5" minlength="10" maxlength="2000" required placeholder="How can we support you?"></textarea><br><br><button class="btn y">Submit inquiry</button></form>
-    <div class="card"><h3>Accra campus office</h3><p><b>Address</b><br>IH41 Bletse St. GW-0926-5269, Accra, Ghana</p><p><b>Phone</b><br>+233 244 891 066<br>+233 558 636 562 (Admissions hotline)</p><p><b>Email</b><br>Unichildschool11@gmail.com</p><p><b>Office hours</b><br>Monday to Friday, 6:30 AM to 4:00 PM</p></div></div>`
+    <div class="card"><h3>Accra campus office</h3><p><b>Address</b><br>JPRF+JJ2 Unichild International School, Sowutoum, Accra, Ghana</p><p><b>Phone</b><br>+233 244 891 066<br>+233 558 636 562 (Admissions hotline)</p><p><b>Email</b><br>Unichildschool11@gmail.com</p><p><b>Office hours</b><br>Monday to Friday, 6:30 AM to 4:00 PM</p><p><a href="https://maps.app.goo.gl/bRkfAQMwGThSGzYW8?g_st=aw" target="_blank" rel="noopener noreferrer">Open location in Google Maps</a></p></div></div>`
     +sec('Common admissions questions',FAQ.map(q=>`<details><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join(''),1);
   }else{location.hash='#/home';return null}
   return shell(h);

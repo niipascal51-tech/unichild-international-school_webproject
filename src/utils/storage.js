@@ -1,20 +1,26 @@
 const crypto = require('crypto');
-const { createClient } = require('@supabase/supabase-js');
+const {
+  BlobServiceClient,
+  StorageSharedKeyCredential,
+  BlobSASPermissions,
+  generateBlobSASQueryParameters,
+} = require('@azure/storage-blob');
 
 const EXT = { 'application/pdf': 'pdf', 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
-const bucket = () => process.env.STORAGE_BUCKET || 'school-files';
+const containerName = () => process.env.STORAGE_CONTAINER || 'school-files';
 
-let client;
-const getClient = () => {
-  if (!client) {
-    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      throw new Error('Storage is not configured');
-    }
-    client = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
-      auth: { persistSession: false },
-    });
+let credential;
+let container;
+const getContainer = () => {
+  if (!container) {
+    const account = process.env.AZURE_STORAGE_ACCOUNT;
+    const key = process.env.AZURE_STORAGE_KEY;
+    if (!account || !key) throw new Error('Storage is not configured');
+    credential = new StorageSharedKeyCredential(account, key);
+    const service = new BlobServiceClient(`https://${account}.blob.core.windows.net`, credential);
+    container = service.getContainerClient(containerName());
   }
-  return client;
+  return container;
 };
 
 const detectType = (b) => {
@@ -32,21 +38,40 @@ const detectType = (b) => {
 
 const saveFile = async (folder, buffer, mime) => {
   const key = `${folder}/${crypto.randomUUID()}.${EXT[mime]}`;
-  const { error } = await getClient()
-    .storage.from(bucket())
-    .upload(key, buffer, { contentType: mime, upsert: false });
-  if (error) throw new Error(`Upload failed: ${error.message}`);
+  try {
+    await getContainer().getBlockBlobClient(key).uploadData(buffer, {
+      blobHTTPHeaders: { blobContentType: mime, blobContentDisposition: 'inline' },
+    });
+  } catch (error) {
+    throw new Error(`Upload failed: ${error.message}`);
+  }
   return key;
 };
 
 const removeFile = async (key) => {
-  const { error } = await getClient().storage.from(bucket()).remove([key]);
-  if (error) console.error('Storage delete failed:', error.message);
+  try {
+    await getContainer().getBlobClient(key).deleteIfExists();
+  } catch (error) {
+    console.error('Storage delete failed:', error.message);
+  }
 };
 
-const urlFor = (key, downloadName) =>
-  getClient()
-    .storage.from(bucket())
-    .getPublicUrl(key, downloadName ? { download: downloadName } : undefined).data.publicUrl;
+const urlFor = (key, downloadName) => {
+  const blob = getContainer().getBlobClient(key);
+  if (!downloadName) return blob.url;
+
+  const sas = generateBlobSASQueryParameters(
+    {
+      containerName: containerName(),
+      blobName: key,
+      permissions: BlobSASPermissions.parse('r'),
+      startsOn: new Date(Date.now() - 5 * 60 * 1000),
+      expiresOn: new Date(Date.now() + 60 * 60 * 1000),
+      contentDisposition: `attachment; filename="${downloadName}"`,
+    },
+    credential
+  ).toString();
+  return `${blob.url}?${sas}`;
+};
 
 module.exports = { detectType, saveFile, removeFile, urlFor };

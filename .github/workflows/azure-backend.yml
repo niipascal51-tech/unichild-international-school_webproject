@@ -1,0 +1,21 @@
+name: Deploy backend to Azure
+
+on:
+  push:
+    branches: [pascal-backend]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - run: npm ci --omit=dev
+      - uses: azure/webapps-deploy@v3
+        with:
+          app-name: unichildinternationalschoolbackend
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .

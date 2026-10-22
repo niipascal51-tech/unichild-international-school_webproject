@@ -1569,6 +1569,94 @@ button { cursor: pointer; }
   color: #f6c51c;
 }
 
+/* Balanced school palette: black for structure, yellow for emphasis,
+   grey for supporting content, and white for reading surfaces. */
+.home-page,
+.public-page {
+  --palette-black: #202124;
+  --palette-grey: #686868;
+  --palette-light-grey: #f1f1ef;
+  --palette-yellow: #f6c51c;
+  --palette-white: #fff;
+}
+.home-page main > section:not(.hero-home):not(.cta-band) h1,
+.home-page main > section:not(.hero-home):not(.cta-band) h2,
+.home-page main > section:not(.hero-home):not(.cta-band) h3,
+.home-page .section-title,
+.public-page main > section:not(.page-hero):not(.cta-band) h1,
+.public-page main > section:not(.page-hero):not(.cta-band) h2,
+.public-page main > section:not(.page-hero):not(.cta-band) h3,
+.public-page .section-title {
+  color: var(--palette-black) !important;
+}
+.home-page .section-heading .eyebrow,
+.public-page .section-heading .eyebrow,
+.home-page .home-academic-path-section .eyebrow,
+.home-page .home-news-section .eyebrow,
+.home-page .home-testimonials-section .eyebrow,
+.public-page .eyebrow {
+  color: #8a6a00;
+}
+.home-page .section-subtitle,
+.public-page .section-subtitle,
+.home-page .home-school-copy > p,
+.public-page .about-journey-copy p {
+  color: #58616b;
+}
+.home-page .public-card-section,
+.public-page .public-card-section,
+.home-page .section-dark,
+.public-page .section-dark {
+  background: linear-gradient(135deg, #202124 0%, #4f4f4f 100%);
+}
+.home-page .public-card-section .section-title,
+.home-page .section-dark .section-title,
+.public-page .public-card-section .section-title,
+.public-page .section-dark .section-title {
+  color: var(--palette-white) !important;
+}
+.home-page .public-card-section .section-heading .eyebrow,
+.home-page .section-dark .section-heading .eyebrow,
+.public-page .public-card-section .section-heading .eyebrow,
+.public-page .section-dark .section-heading .eyebrow {
+  color: var(--palette-yellow);
+}
+.home-page .public-card-section .value-card,
+.home-page .public-card-section .stage-card,
+.home-page .public-card-section .content-card,
+.home-page .public-card-section .panel,
+.home-page .public-card-section .quote-card,
+.public-page .public-card-section .value-card,
+.public-page .public-card-section .stage-card,
+.public-page .public-card-section .content-card,
+.public-page .public-card-section .panel,
+.public-page .public-card-section .quote-card {
+  border-color: var(--palette-yellow);
+  background: var(--palette-white) !important;
+}
+.home-page .home-events-section,
+.public-page .section-soft {
+  background: var(--palette-light-grey);
+}
+.home-page .home-events-section .section-title,
+.home-page .home-news-section .section-title,
+.home-page .home-testimonials-section .section-title {
+  color: var(--palette-black) !important;
+}
+.home-page .cta-band,
+.public-page .cta-band {
+  background: var(--palette-yellow);
+  color: var(--palette-black);
+}
+.home-page .cta-band h2,
+.public-page .cta-band h2 {
+  color: var(--palette-black) !important;
+}
+.home-page .cta-band p,
+.public-page .cta-band p {
+  color: #403714;
+}
+
 /* Portal login branding remains black across student, teacher and administrator sign-in. */
 .login-screen {
   background: #000;

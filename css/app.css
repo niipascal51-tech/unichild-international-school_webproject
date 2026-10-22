@@ -1546,6 +1546,22 @@ button { cursor: pointer; }
 .public-page .btn:hover {
   background: #e5b600;
 }
+.btn.apply-now {
+  min-width: 176px;
+  min-height: 54px;
+  padding: 13px 28px 13px 34px;
+  border: 0;
+  border-radius: 32px 0 0 32px;
+  background: #202124;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 8px 18px #2021242b;
+}
+.btn.apply-now:hover,
+.btn.apply-now:focus-visible {
+  background: #38393b;
+  color: #fff;
+}
 .public-page .site-footer {
   background: #292929;
 }

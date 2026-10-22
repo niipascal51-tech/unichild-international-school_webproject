@@ -437,7 +437,7 @@ function homePage() {
   </div><div class="hero-home-inner">
     <div class="hero-copy"><h1>Nurturing Young Minds Through Words & Actions</h1>
       <p>Unichild International School is committed to delivering a transformative education that empowers every learner to think independently, act with integrity, and shape a brighter future.</p>
-      <div class="hero-buttons"><a class="btn" href="admissions.html">Apply Now</a><a class="btn btn-outline" href="about.html">Explore Academics</a></div>
+      <div class="hero-buttons"><a class="btn apply-now" href="admissions.html">Apply Now</a><a class="btn btn-outline" href="about.html">Explore Academics</a></div>
     </div>
   </div><div class="hero-controls" aria-label="Slideshow controls">
     <button class="hero-arrow" type="button" data-action="hero-previous" aria-label="Previous slide">‹</button>
@@ -458,7 +458,7 @@ function homePage() {
   <section class="section section-soft home-events-section"><div class="container"><div class="page-toolbar"><div><span class="eyebrow">Mark your calendar</span><h2 class="section-title">Upcoming School Events</h2></div><a class="btn btn-small" href="events.html">View full calendar</a></div>
     <div class="grid-3">${state.events.slice(0, 3).map(item => `<div class="panel">${eventCard(item)}</div>`).join("")}</div></div></section>
   <section class="section public-card-section home-news-section"><div class="container">${sectionHeading("Latest updates", "News & Academic Blogs")}<div class="grid-3">${published.map(newsCard).join("")}</div></div></section>
-  <section class="cta-band home-admissions-band"><div class="container"><span class="eyebrow">Begin the journey</span><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Creche through Junior High School admissions are open for the 2026/2027 academic year. Contact our registrar to take the next step.</p><a class="btn btn-dark" href="admissions.html">Apply Now</a> <a class="btn btn-outline" href="admissions.html">Admission Requirements</a></div></section>
+  <section class="cta-band home-admissions-band"><div class="container"><span class="eyebrow">Begin the journey</span><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Creche through Junior High School admissions are open for the 2026/2027 academic year. Contact our registrar to take the next step.</p><a class="btn apply-now" href="admissions.html">Apply Now</a> <a class="btn btn-outline" href="admissions.html">Admission Requirements</a></div></section>
   <section class="section section-soft public-card-section home-testimonials-section"><div class="container">${sectionHeading("Families say", "What Parents Say About Us")}<div class="grid-2">
     <article class="quote-card"><span class="eyebrow">★★★★★</span><blockquote>“My child has become more confident and curious. The teachers care about both academic excellence and the character that shapes our young learners.”</blockquote><strong>Mrs. Ama Boateng</strong></article>
     <article class="quote-card"><span class="eyebrow">★★★★★</span><blockquote>“The balance of academic work and practical learning has really helped my child grow. We are grateful for the supportive environment.”</blockquote><strong>Mr. Samuel Mensah</strong></article>
@@ -479,7 +479,7 @@ function aboutPage() {
     <section class="section core-values-section"><div class="container">${sectionHeading("The code of conduct", "Our Core Values Detailed")}${valuesGrid()}</div></section>
     <section class="section section-soft faculty-leaders-section"><div class="container">${sectionHeading("Meet", "Our Leadership Team")}<div class="grid-4">
       ${[["Mrs. Evelyn Mensah", "Principal / Founder"], ["Mr. Ebenezer Osei", "Vice Principal"], ["Mrs. Cynthia Kwareng", "Head of Academics"], ["Mr. David Alabi", "Head of Administration"]].map(([name, role]) => `<article class="content-card"><div class="photo-placeholder"></div><div class="content-card-body"><h3>${name}</h3><p>${role}</p></div></article>`).join("")}</div></div></section>
-    <section class="cta-band"><div class="container"><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Join our school community and discover a place where every learner can thrive.</p><a class="btn btn-dark" href="admissions.html">Apply Now</a> <button class="btn btn-outline" data-action="print-page">Print About Us</button></div></section>`);
+    <section class="cta-band"><div class="container"><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Join our school community and discover a place where every learner can thrive.</p><a class="btn apply-now" href="admissions.html">Apply Now</a></div></section>`);
 }
 
 function academicsPage() {

@@ -239,7 +239,10 @@ One text block per section. Valid sections: `home`, `about`, `academics`, `admis
 
 Categories: `about`, `admissions`, `fees`, `forms`, `other`.
 
-Each document has `url` (opens in the browser, good for print) and `downloadUrl` (forces a download). Both are public links.
+Each document has two links:
+
+- `url` opens the file in the browser (good for printing). It does not expire.
+- `downloadUrl` forces a download. It is a **temporary link valid for about one hour**, regenerated every time the list is fetched. Do not store it. Use the value from the latest response.
 
 ## Gallery
 
@@ -270,4 +273,5 @@ Categories: `building`, `events`, `activities`, `other`. Each item has a public 
 3. **Text is plain text.** Show it as text, and never insert it as raw HTML, otherwise a stored script could run.
 4. **Handle `401` globally:** clear the saved token and redirect to the login page.
 5. **Show the right screens per role.** The server enforces permissions, but hiding buttons a user cannot use makes for a better experience.
-6. **Deployed CORS:** the backend only accepts browser requests from the frontend address configured at deployment. Tell the backend developer your final URL.
+6. **Temporary download links:** a document’s `downloadUrl` expires after about an hour. Fetch the list again to get a fresh one, and never save it.
+7. **Deployed CORS:** the backend only accepts browser requests from the frontend address configured at deployment. Tell the backend developer your final URL.

@@ -372,6 +372,7 @@ button { cursor: pointer; }
 .home-page .home-testimonials-section .section-title { color: #1e293b; }
 .home-page .home-academic-path-section .section-subtitle, .home-page .home-news-section .section-subtitle,
 .home-page .home-testimonials-section .section-subtitle { color: #64748b; }
+.home-page .home-academic-path-section .section-subtitle { color: #f1f1f1 !important; }
 .home-page .home-academic-path-section .eyebrow, .home-page .home-news-section .eyebrow,
 .home-page .home-testimonials-section .eyebrow { color: #92400e; }
 .home-page .home-academic-path-section .stage-card, .home-page .home-news-section .content-card,
@@ -447,7 +448,13 @@ button { cursor: pointer; }
   color: #fff;
 }
 .about-page .purpose-card p, .about-page .core-value-card p, .about-page .faculty-leaders-section .content-card p {
-  color: #f1f1f1;
+  color: #334155 !important;
+}
+.about-page .faculty-leaders-section .content-card p {
+  color: #fff !important;
+}
+body.about-page section.faculty-leaders-section article.content-card .content-card-body p {
+  color: #fff !important;
 }
 .about-page .faculty-leaders-section .content-card-body {
   background: transparent;
@@ -1538,7 +1545,7 @@ button { cursor: pointer; }
 .public-page .quote-card p,
 .public-page .academic-group-card p,
 .public-page .requirement-card p {
-  color: #686868;
+  color: #4f5964 !important;
 }
 .public-page .btn,
 .public-page .cta-band {

@@ -1,4 +1,4 @@
-const BACKEND_API_DEFAULT = "http://localhost:5000/api";
+const BACKEND_API_DEFAULT = "https://unichildinternationalschoolbackend-bfg4hwd8fpduavgp.westus3-01.azurewebsites.net/api";
 const BACKEND_API_KEY = "unichild-backend-api-url";
 const BACKEND_TOKEN_KEY = "unichild-backend-token";
 const BACKEND_USER_KEY = "unichild-backend-user";

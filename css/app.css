@@ -1714,3 +1714,102 @@ button { cursor: pointer; }
   background-repeat: no-repeat;
   text-shadow: 0 2px 8px rgba(0, 0, 0, .65);
 }
+
+/* Public pages use a larger reading scale and stronger text contrast. */
+.home-page,
+.public-page {
+  font-size: 15px;
+}
+.home-page p,
+.public-page p {
+  font-size: 15px;
+  line-height: 1.75;
+}
+.home-page .site-top,
+.public-page .site-top {
+  font-size: 12px;
+}
+.home-page .nav-links a,
+.public-page .nav-links a {
+  font-size: 13px;
+}
+.home-page .notice-strip,
+.public-page .notice-strip {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.home-page .eyebrow,
+.public-page .eyebrow {
+  font-size: 11px;
+  letter-spacing: .14em;
+}
+.home-page .hero-home p {
+  max-width: 640px;
+  color: #f4f3ef;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.home-page .section-subtitle,
+.public-page .section-subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.home-page .home-school-copy > p,
+.public-page .about-journey-copy p {
+  color: #4f5964;
+  font-size: 16px;
+}
+.home-page .public-card-section .value-card p,
+.home-page .public-card-section .stage-card p,
+.home-page .public-card-section .content-card p,
+.home-page .public-card-section .quote-card blockquote,
+.public-page .value-card p,
+.public-page .stage-card p,
+.public-page .content-card p,
+.public-page .panel p,
+.public-page .quote-card blockquote,
+.public-page .academic-group-card p,
+.public-page .requirement-card p {
+  color: #4f5964;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.home-page .hero-feature-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.home-page .cta-band p,
+.public-page .cta-band p {
+  color: #493d12;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.home-page .site-footer p,
+.home-page .site-footer a,
+.public-page .site-footer p,
+.public-page .site-footer a {
+  font-size: 13px;
+  line-height: 1.65;
+}
+.home-page .footer-bottom,
+.public-page .footer-bottom {
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .home-page p,
+  .public-page p {
+    font-size: 15px;
+  }
+  .home-page .hero-home p {
+    font-size: 16px;
+  }
+  .home-page .site-footer-inner,
+  .public-page .site-footer-inner {
+    gap: 22px;
+  }
+  .home-page .footer-bottom,
+  .public-page .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

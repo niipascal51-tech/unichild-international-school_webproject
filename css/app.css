@@ -342,7 +342,9 @@ button { cursor: pointer; }
 .values-stages-banner .section-title { color: #1e293b; }
 .values-stages-banner .eyebrow { color: #78350f; }
 .values-stages-banner p, .values-stages-banner .section-subtitle,
-.values-stages-banner .value-card p, .values-stages-banner .stage-card p { color: #334155; }
+.values-stages-banner .value-card p, .values-stages-banner .stage-card p { color: #334155 !important; }
+.section-dark .stage-card p { color: #334155 !important; }
+.home-events-section .panel .calendar-event p { color: #4f5964 !important; }
 .home-page .grid-2, .home-page .grid-3, .home-page .grid-4, .home-page .grid-5,
 .public-page .grid-2, .public-page .grid-3, .public-page .grid-4, .public-page .grid-5,
 .public-page .academic-groups-grid { align-items: stretch; }

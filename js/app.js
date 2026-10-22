@@ -196,11 +196,17 @@ const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, char => ({
 }[char]));
 const safeNoticeLink = value => {
   const link = String(value || "").trim();
-  if (!link || /^[a-z][a-z\d+.-]*:/i.test(link) && !/^https?:/i.test(link)) return "";
+  if (!link || link.startsWith("//") || /^[a-z][a-z\d+.-]*:/i.test(link) && !/^https?:/i.test(link)) return "";
   return link;
 };
 const money = value => `GHS ${Number(value || 0).toLocaleString("en-GH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-const dateText = value => value ? new Date(`${value}T12:00:00`).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "—";
+const dateText = value => {
+  if (!value) return "—";
+  const date = new Date(`${value}T12:00:00`);
+  return Number.isNaN(date.valueOf())
+    ? "—"
+    : date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+};
 const initials = value => String(value || "").split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
 
 function readState() {
@@ -413,8 +419,9 @@ function academicGroupDetails(group) {
 
 function eventCard(event) {
   const date = new Date(`${event.date}T12:00:00`);
-  const day = date.toLocaleDateString("en-GB", { day: "2-digit" });
-  const month = date.toLocaleDateString("en-GB", { month: "short" }).toUpperCase();
+  const validDate = !Number.isNaN(date.valueOf());
+  const day = validDate ? date.toLocaleDateString("en-GB", { day: "2-digit" }) : "—";
+  const month = validDate ? date.toLocaleDateString("en-GB", { month: "short" }).toUpperCase() : "";
   return `<article class="calendar-event"><span class="calendar-date"><b>${day}</b>${month}</span>
     <div><h4>${escapeHtml(event.title)}</h4><p>${escapeHtml(event.time)} · ${escapeHtml(event.location)}</p></div></article>`;
 }
@@ -430,9 +437,9 @@ function newsCard(item) {
 function homePage() {
   const published = state.news.filter(item => item.status === "Published").slice(0, 3);
   return publicLayout("home", `<section class="hero-home"><div class="hero-slides" aria-label="School highlights" aria-roledescription="carousel">
-    <div class="hero-slide is-active" style="--slide-image:url('../images/hero.jpg');--slide-tint:#50432f" aria-hidden="false"></div>
-    <div class="hero-slide" style="--slide-image:url('../images/about.jpg');--slide-tint:#374838" aria-hidden="true"></div>
-    <div class="hero-slide" style="--slide-image:url('../images/admissions.jpg');--slide-tint:#56413c" aria-hidden="true"></div>
+    <div class="hero-slide is-active" style="--slide-tint:#50432f;background-image:linear-gradient(100deg,rgba(24,24,25,.84),rgba(24,24,25,.55) 58%,rgba(24,24,25,.25)),url('images/hero.jpg')" aria-hidden="false"></div>
+    <div class="hero-slide" style="--slide-tint:#374838;background-image:linear-gradient(100deg,rgba(24,24,25,.84),rgba(24,24,25,.55) 58%,rgba(24,24,25,.25)),url('images/about.jpg')" aria-hidden="true"></div>
+    <div class="hero-slide" style="--slide-tint:#56413c;background-image:linear-gradient(100deg,rgba(24,24,25,.84),rgba(24,24,25,.55) 58%,rgba(24,24,25,.25)),url('images/admissions.jpg')" aria-hidden="true"></div>
     <div class="hero-slide-shade"></div>
   </div><div class="hero-home-inner">
     <div class="hero-copy"><h1>Nurturing Young Minds Through Words & Actions</h1>

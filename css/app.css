@@ -12,13 +12,97 @@
   --red: #c94b50;
 }
 
+/* Public-page heading identity applies at every viewport size. */
+.home-page h1,
+.home-page h2,
+.home-page h3,
+.home-page h4,
+.public-page h1,
+.public-page h2,
+.public-page h3,
+.public-page h4,
+.home-page .section-title,
+.public-page .section-title,
+.home-page .content-card strong,
+.public-page .content-card strong,
+.home-page .value-card h3,
+.public-page .value-card h3,
+.home-page .stage-card h3,
+.public-page .stage-card h3,
+.home-page .quote-card strong,
+.public-page .quote-card strong {
+  color: var(--gold) !important;
+  font-weight: 700;
+}
+.home-page .hero-home h1,
+.public-page .page-hero h1 {
+  text-shadow: 0 2px 18px #0008;
+}
+
+/* Editorial type and deeper school palette */
+.app-layout,
+.login-screen,
+.public-page {
+  color: #172231;
+}
+.app-layout p,
+.app-layout small,
+.app-layout label,
+.app-layout input,
+.app-layout select,
+.app-layout textarea,
+.app-layout button,
+.app-layout a {
+  letter-spacing: .012em;
+}
+.app-layout .app-heading h1,
+.app-layout .panel-header h2,
+.app-layout .panel-header h3,
+.app-layout .student-section-heading h2,
+.app-layout .student-tasks h3,
+.app-layout .student-calendar > strong {
+  color: #172b40;
+  font-weight: 700;
+}
+.app-layout .panel,
+.app-layout .student-home-grid {
+  border: 1px solid #d9dee4;
+}
+.app-layout .panel-header p,
+.app-layout .student-profile-banner p,
+.app-layout .student-task,
+.app-layout .student-section-heading a {
+  color: #536273;
+}
+.app-layout .student-section-heading {
+  border-bottom-color: #cbd3dc;
+}
+.app-layout .assignment-card {
+  border-color: #cbd3dc;
+  background: #fbfaf5;
+}
+.app-layout .assignment-card strong,
+.app-layout .lesson-card strong,
+.app-layout .student-task,
+.app-layout .student-refer strong {
+  font-weight: 700;
+  letter-spacing: .018em;
+}
+.app-layout .student-yellow-button,
+.app-layout .lesson-yellow {
+  background: #9a7200;
+}
+.app-layout .lesson-coral {
+  background: #8e3544;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: #fff; color: var(--ink); font: 14px/1.55 "DM Sans", sans-serif; }
+body { margin: 0; background: #fff; color: var(--ink); font: 14px/1.6 "DM Sans", sans-serif; letter-spacing: .008em; }
 button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }
-h1, h2, h3, h4, .serif { font-family: "Playfair Display", Georgia, serif; }
+h1, h2, h3, h4, .serif { font-family: "Playfair Display", Georgia, serif; color: #172231; letter-spacing: -.018em; }
 button { cursor: pointer; }
 
 .site-top { background: #282828; color: #f6f6f6; font-size: 11px; }
@@ -38,9 +122,115 @@ button { cursor: pointer; }
 .home-page .home-nav.is-scrolled .mobile-nav-toggle { color: #fff; text-shadow: none; }
 .home-page .home-nav.is-scrolled .brand-crest { border-color: #332b10; }
 .home-page .home-nav.is-scrolled .nav-links a:hover { border-bottom-color: #fff4c9; color: #fff4c9; }
+
+/* Homepage school colours: yellow, white and ash grey. */
+.home-page {
+  --home-yellow: #f6c51c;
+  --home-yellow-dark: #9a7600;
+  --home-ash: #686868;
+  --home-ash-dark: #292929;
+  background: #fff;
+}
+.home-page .site-top,
+.home-page .notice-strip {
+  background: var(--home-ash-dark);
+}
+.home-page .site-nav.home-nav,
+.home-page .site-nav.home-nav.is-scrolled {
+  color: #292929;
+  background: var(--home-yellow) !important;
+  border-bottom-color: #d5a900;
+}
+.home-page .home-nav .brand-name,
+.home-page .home-nav .brand-motto,
+.home-page .home-nav .nav-links a,
+.home-page .home-nav.is-scrolled .brand-name,
+.home-page .home-nav.is-scrolled .brand-motto,
+.home-page .home-nav.is-scrolled .nav-links a,
+.home-page .home-nav.is-scrolled .mobile-nav-toggle {
+  color: #292929;
+  text-shadow: none;
+}
+.home-page .home-nav .nav-links a:hover,
+.home-page .home-nav.is-scrolled .nav-links a:hover {
+  border-bottom-color: #292929;
+  color: #292929;
+}
+.home-page .home-nav .brand-crest,
+.home-page .home-nav.is-scrolled .brand-crest {
+  border-color: #292929;
+  mix-blend-mode: normal;
+}
+.home-page .notice-strip {
+  border-bottom-color: var(--home-yellow);
+}
+.home-page .notice-strip-inner strong,
+.home-page .notice-strip-inner a {
+  color: var(--home-yellow);
+}
+.home-page .notice-icon {
+  color: #292929;
+  background: var(--home-yellow);
+}
+.home-page .hero-home .eyebrow,
+.home-page .hero-dot.active {
+  color: var(--home-yellow);
+}
+.home-page .hero-dot.active {
+  border-color: var(--home-yellow);
+  background: var(--home-yellow);
+}
+.home-page .hero-feature {
+  background: linear-gradient(145deg, #f6c51c66, #68686855), radial-gradient(circle at 35% 35%, #c7c7c7, #686868 50%, #292929);
+}
+.home-page .section-soft,
+.home-page .home-events-section {
+  background: #f0f0ee;
+}
+.home-page .recent-stories-section,
+.home-page .public-card-section {
+  background: linear-gradient(118deg, #292929 0%, #686868 54%, #b8940d 100%);
+}
+.home-page .recent-stories-section .content-card,
+.home-page .public-card-section .value-card,
+.home-page .public-card-section .stage-card,
+.home-page .public-card-section .content-card,
+.home-page .public-card-section .panel,
+.home-page .public-card-section .quote-card {
+  border-color: var(--home-yellow);
+}
+.home-page .home-academic-path-section .eyebrow,
+.home-page .home-news-section .eyebrow,
+.home-page .home-testimonials-section .eyebrow {
+  color: var(--home-yellow-dark);
+}
+.home-page .home-academic-path-section .stage-card:hover,
+.home-page .home-news-section .content-card:hover,
+.home-page .home-testimonials-section .quote-card:hover,
+.home-page .home-events-section .panel:hover {
+  border-color: var(--home-yellow);
+}
+.home-page .cta-band {
+  color: #292929;
+  background: var(--home-yellow);
+}
+.home-page .site-footer {
+  background: var(--home-ash-dark);
+}
+.home-page main > section h1,
+.home-page main > section h2,
+.home-page main > section h3,
+.home-page .section-title,
+.home-page .hero-home h1 {
+  color: var(--home-yellow);
+  font-weight: 700;
+}
+.home-page .hero-home h1 {
+  text-shadow: 0 2px 18px #0008;
+}
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; min-width: 220px; }
-.brand-mark { width: 56px; height: 56px; display: grid; place-items: center; flex: 0 0 auto; border: 2px solid var(--gold); border-radius: 50%; background: #fff; box-shadow: 0 2px 8px #0002; }
-.brand-crest { width: 49px; height: 49px; padding: 2px; border-radius: 50%; display: block; object-fit: contain; background: #fff; color: #28231b; font: 700 17px "Playfair Display", serif; transform: translateY(3px); }
+.brand-mark { width: 56px; height: 56px; display: grid; place-items: center; flex: 0 0 auto; overflow: hidden; border: 2px solid var(--gold); border-radius: 12px; background: #fff; box-shadow: 0 2px 8px #0002; }
+.brand-crest { box-sizing: border-box; width: 100%; height: 100%; min-width: 0; min-height: 0; max-width: 100%; max-height: 100%; padding: 2px; border-radius: 9px; display: block; object-fit: contain; background: #fff; color: #28231b; font: 700 17px "Playfair Display", serif; }
 .brand-copy { display: block; min-width: 0; }
 .brand-name { display: flex; flex-direction: column; color: inherit; font: 700 18px/1 "Playfair Display", serif; letter-spacing: .02em; text-transform: uppercase; }
 .brand-name small { margin-top: 3px; font: 700 9px/1.1 "DM Sans", sans-serif; letter-spacing: .14em; }
@@ -53,6 +243,24 @@ button { cursor: pointer; }
 .nav-links a:hover, .nav-links a:focus-visible { border-bottom-color: #fff4c9; color: #fff4c9; }
 .nav-actions { display: flex; align-items: center; gap: 9px; }
 .nav-actions .btn { min-width: 106px; white-space: nowrap; padding: 10px 13px; }
+.site-nav .nav-actions .btn.btn-dark {
+  min-width: 178px;
+  min-height: 50px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 14px;
+  background: #202124 !important;
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px #2021242b;
+}
+.site-nav .nav-actions .btn.btn-dark:hover,
+.site-nav .nav-actions .btn.btn-dark:focus-visible {
+  background: #38393b !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
 .btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; min-height: 40px; border: 1px solid transparent; border-radius: 7px; padding: 10px 15px; color: #242424; background: var(--gold); font-size: 12px; font-weight: 700; text-decoration: none; transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease, color .16s ease, transform .16s ease; }
 .btn:hover { background: #e8b600; transform: translateY(-2px); box-shadow: 0 5px 12px #00000024; }
 .btn:focus-visible { outline: 3px solid #d6ac126b; outline-offset: 3px; }
@@ -387,8 +595,8 @@ button { cursor: pointer; }
 .app-layout { min-height: 100vh; background: #f6f5f1; }
 .app-sidebar { position: fixed; inset: 0 auto 0 0; width: 232px; z-index: 40; display: flex; flex-direction: column; padding: 18px 13px 12px; background: #28292b; color: #dbdcde; }
 .app-sidebar .brand { min-width: 0; margin: 0 8px 22px; color: white; }
-.app-sidebar .brand-mark { width: 48px; height: 48px; }
-.app-sidebar .brand-crest { width: 41px; height: 41px; }
+.app-sidebar .brand-mark { width: 58px; height: 58px; }
+.app-sidebar .brand-crest { width: 100%; height: 100%; }
 .app-sidebar .brand-name { font-size: 15px; }
 .app-sidebar .brand-name small { font-size: 7px; }
 .app-sidebar .brand-motto { color: #c6a91c; font-size: 8px; }
@@ -415,7 +623,7 @@ button { cursor: pointer; }
 .topbar-tools { display: flex; align-items: center; gap: 14px; }
 .topbar-account { padding: 0; border: 0; border-radius: 50%; background: transparent; }
 .topbar-account:focus-visible { outline: 3px solid #f6c51c66; outline-offset: 3px; }
-.icon-button { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: #555; position: relative; transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease, color .16s ease, transform .16s ease; }
+.icon-button { width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: #555; position: relative; line-height: 0; transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease, color .16s ease, transform .16s ease; }
 .icon-button:hover, .icon-button:focus-visible { border-color: #c9a92e; color: #28231b; background: #fffaf0; transform: translateY(-1px); box-shadow: 0 4px 9px #00000018; }
 .icon-button:focus-visible { outline: 3px solid #d6ac126b; outline-offset: 2px; }
 .icon-button:active { transform: translateY(0); box-shadow: none; }
@@ -503,8 +711,8 @@ button { cursor: pointer; }
 .toast.error { background: #a9393e; }
 .login-screen { min-height: 100vh; display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); }
 .login-brand { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(28px,6vw,76px); background: var(--gold); }
-.login-brand .brand-mark { width: 64px; height: 64px; }
-.login-brand .brand-crest { width: 55px; height: 55px; }
+.login-brand .brand-mark { width: 82px; height: 82px; }
+.login-brand .brand-crest { width: 100%; height: 100%; }
 .login-brand .brand-name { font-size: 25px; }
 .login-brand .brand-name small { font-size: 11px; }
 .login-brand-copy { max-width: 590px; }
@@ -628,12 +836,12 @@ button { cursor: pointer; }
   .site-top-inner > :last-child { display: none; }
   .site-nav-inner { gap: 8px; padding: 8px 12px; }
   .brand { min-width: 0; gap: 7px; }
-  .brand-mark { width: 46px; height: 46px; border-width: 1px; }
-  .brand-crest { width: 40px; height: 40px; }
+  .brand-mark { width: 58px; height: 58px; border-width: 1px; }
+  .brand-crest { width: 100%; height: 100%; }
   .brand-name { font-size: 14px; }
   .brand-name small { font-size: 7px; letter-spacing: .1em; }
   .brand-motto { font-size: 7px; }
-  .nav-actions .btn { min-width: 108px; min-height: 40px; padding: 8px 10px; font-size: 10px; }
+  .site-nav .nav-actions .btn.btn-dark { min-width: 126px; min-height: 42px; padding: 9px 12px; font-size: 11px; border-radius: 10px; }
   .home-page .grid-2, .home-page .grid-3, .home-page .grid-4, .home-page .grid-5,
   .public-page .grid-2, .public-page .grid-3, .public-page .grid-4, .public-page .grid-5,
   .public-page .academic-groups-grid, .public-page .campus-life-grid { grid-template-columns: 1fr; }
@@ -797,39 +1005,52 @@ button { cursor: pointer; }
 }
 
 /* Student learning workspace */
-.student-layout { background: #f2f5ff; }
-.student-layout .app-sidebar { width: 220px; padding: 20px 12px 14px; background: linear-gradient(180deg, var(--portal-primary, #f6c51c) 0%, var(--portal-accent, #e8b313) 100%); box-shadow: 8px 0 26px #9d771d38; }
+.student-layout { background: #fbfaf7; }
+.student-layout .app-sidebar { width: 220px; padding: 20px 12px 14px; background: linear-gradient(180deg, color-mix(in srgb, var(--portal-primary, #e5b600), #fff 8%) 0%, color-mix(in srgb, var(--portal-primary, #e5b600), #6b4f00 18%) 100%); box-shadow: 8px 0 26px #49350038; }
 .student-layout .app-sidebar .brand { margin: 0 9px 30px; }
-.student-layout .app-sidebar .brand-mark { border: 0; background: #fff; box-shadow: 0 4px 12px #8a681c35; }
-.student-layout .app-sidebar .brand-crest { width: 41px; height: 41px; }
+.student-layout .app-sidebar .brand-mark { border: 0; border-radius: 12px; background: #fff; box-shadow: 0 4px 12px #8a681c35; }
+.student-layout .app-sidebar .brand-crest { width: 100%; height: 100%; }
 .student-layout .app-sidebar .brand-name { color: #28231b; }
 .student-layout .app-sidebar .brand-motto { color: #6d5500; }
-.student-layout .sidebar-caption { color: #705800; }
+.student-layout .sidebar-caption { color: #705800; font-weight: 800; }
 .student-layout .sidebar-link { min-height: 45px; color: #493b08; border-radius: 7px; }
 .student-layout .sidebar-link:hover { color: #28231b; background: #ffffff45; }
-.student-layout .sidebar-link.active { color: #28231b; background: color-mix(in srgb, var(--portal-primary, #f6c51c) 35%, #fff); box-shadow: 0 5px 14px #8a681c2e; }
+.student-layout .sidebar-link.active { color: #172231; background: color-mix(in srgb, var(--portal-primary, #e5b600) 35%, #fff); box-shadow: 0 5px 14px #8a681c2e; }
 .student-layout .sidebar-link .nav-icon { color: #715900; }
 .student-layout .sidebar-link.active .nav-icon { color: #28231b; }
 .student-layout .sidebar-profile { border-top-color: #8a681c55; }
 .student-layout .sidebar-profile small { color: #6d5500; }
-.student-layout .app-main { margin-left: 220px; background: #f2f5ff; }
-.student-layout .app-topbar { min-height: 62px; background: #fff; padding: 10px 28px; border-bottom: 1px solid #e7ebf5; }
-.student-layout .app-heading h1 { color: #253c54; font-size: 18px; }
-.student-layout .app-heading p, .student-layout .date-label { color: #91a0b2; }
+.student-layout .app-main { margin-left: 220px; background: #f6f3eb; }
+.student-layout .app-topbar { min-height: 62px; background: #fff; padding: 10px 28px; border-bottom: 1px solid #d9dee4; box-shadow: 0 3px 16px #1722310a; }
+.student-layout .app-heading h1 { color: #172b40; font-size: 19px; letter-spacing: -.02em; }
+.student-layout .app-heading p, .student-layout .date-label { color: #617080; }
 .student-layout .app-content { padding: 24px 28px 38px; }
 .student-layout .welcome-row { display: none; }
 .student-home { max-width: 1260px; margin: 0 auto; }
-.student-search { width: min(360px, 100%); height: 34px; display: flex; align-items: center; gap: 8px; margin-bottom: 17px; padding: 0 12px; border-radius: 8px; background: #e7effd; color: #8291a7; font-size: 15px; }
+.student-search { width: min(360px, 100%); height: 38px; display: flex; align-items: center; gap: 8px; margin-bottom: 17px; padding: 0 8px 0 12px; border: 1px solid #e3d39a; border-radius: 8px; background: #fffdf4; color: #6d5500; font-size: 15px; box-shadow: 0 3px 10px #8a681c12; }
 .student-search input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: #3a4b61; font-size: 10px; }
-.student-search-icon { font-size: 13px; }
-.student-home-grid { display: grid; grid-template-columns: minmax(0, 1fr) 245px; gap: 0; overflow: hidden; border-radius: 18px; background: #fff; box-shadow: 0 14px 38px #3e54891c; }
+.student-search input::placeholder { color: #8f8568; }
+.student-search-button { width: 30px; height: 30px; display: grid; place-items: center; flex: 0 0 auto; border: 0; border-radius: 6px; color: #fff; background: #28231b; cursor: pointer; }
+.student-search-button:hover, .student-search-button:focus-visible { background: #6d5500; outline: 2px solid #f6c51c; outline-offset: 1px; }
+.student-search-button svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 2; }
+.student-search-status { margin: 14px 0 0; color: #806000; font-size: 11px; }
+.notification-button svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.notification-button { position: relative; }
+.notification-dot { position: absolute; top: 7px; right: 7px; width: 6px; height: 6px; border: 1px solid #fff; border-radius: 50%; background: #c94b50; }
+.notification-list { display: grid; gap: 10px; }
+.notification-item { padding: 12px; border: 1px solid #eadfb9; border-radius: 8px; background: #fffdf4; }
+.notification-item strong, .notification-item small, .notification-item p { display: block; }
+.notification-item strong { color: #28231b; }
+.notification-item small { margin-top: 2px; color: #806000; font-size: 10px; }
+.notification-item p { margin: 5px 0 0; color: #6f6a5e; font-size: 11px; }
+.student-home-grid { display: grid; grid-template-columns: minmax(0, 1fr) 245px; gap: 0; overflow: hidden; border-radius: 18px; background: #fff; box-shadow: 0 14px 38px #1722311c; }
 .student-home-grid main { padding: 0 25px 28px; }
-.student-profile-banner { min-height: 151px; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 0 -25px 25px; padding: 24px 30px; border-radius: 18px 18px 16px 16px; background: linear-gradient(110deg, #fff 0%, #f8fbff 70%, #e7f1ff 100%); }
-.student-profile-banner h2 { margin: 3px 0 4px; color: #263f55; font: 700 21px "DM Sans", sans-serif; }
-.student-profile-banner p { max-width: 430px; margin: 0 0 13px; color: #74859a; font-size: 11px; }
-.student-profile-banner p strong { color: #1766c9; }
-.student-eyebrow { color: #263f55; font-size: 16px; font-weight: 800; }
-.student-yellow-button { display: inline-flex; padding: 8px 19px; border-radius: 18px; color: #fff; background: #ffbf18; font-size: 10px; font-weight: 800; text-decoration: none; }
+.student-profile-banner { min-height: 151px; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 0 -25px 25px; padding: 24px 30px; border-radius: 18px 18px 16px 16px; background: linear-gradient(110deg, #fff 0%, #fbf8ef 70%, #f1e3ad 100%); }
+.student-profile-banner h2 { margin: 3px 0 4px; color: #172b40; font: 700 21px "DM Sans", sans-serif; letter-spacing: -.02em; }
+.student-profile-banner p { max-width: 430px; margin: 0 0 13px; color: #536273; font-size: 11px; }
+.student-profile-banner p strong { color: #8a6500; }
+.student-eyebrow { color: #172b40; font-size: 16px; font-weight: 800; }
+.student-yellow-button { display: inline-flex; padding: 8px 19px; border-radius: 18px; color: #fff; background: #9a7200; font-size: 10px; font-weight: 800; text-decoration: none; }
 .student-banner-art { width: 128px; height: 95px; display: grid; place-items: center; border-radius: 45% 55% 35% 65%; color: #2768c5; background: #e8f1ff; font-size: 44px; line-height: .8; transform: rotate(-5deg); }
 .student-banner-art span { color: #ffbf18; font-size: 25px; }
 .student-section { margin-top: 21px; }
@@ -938,10 +1159,558 @@ button { cursor: pointer; }
   .student-mini-header { justify-content: space-between; }
 }
 @media (max-width: 620px) {
-  .student-layout .app-main { margin-left: 0; }
+  .student-layout .app-main { margin-left: 0;   }
+  @media (max-width: 480px) {
+    .student-layout .app-topbar { padding: 10px 12px; }
+    .student-layout .app-heading p { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .student-layout .app-topbar .topbar-tools { gap: 4px; }
+    .student-layout .notification-button { width: 34px; height: 34px; }
+    .student-profile-banner { align-items: flex-start; }
+    .student-banner-art { width: 66px; height: 60px; flex: 0 0 auto; }
+  }
+
+  /* Shared school identity across homepage, public pages, login and portals. */
+  body {
+    background: #fff;
+    color: var(--ink);
+  }
+  .site-top,
+  .notice-strip,
+  .site-footer {
+    background: #292929;
+  }
+  .site-nav,
+  .home-page .site-nav.home-nav,
+  .home-page .site-nav.home-nav.is-scrolled {
+    background: var(--gold) !important;
+    border-bottom-color: #d5a900;
+    color: #292929;
+  }
+  .site-nav .brand-name,
+  .site-nav .brand-motto,
+  .site-nav .nav-links a,
+  .site-nav .mobile-nav-toggle,
+  .home-page .home-nav .brand-name,
+  .home-page .home-nav .brand-motto,
+  .home-page .home-nav .nav-links a,
+  .home-page .home-nav.is-scrolled .brand-name,
+  .home-page .home-nav.is-scrolled .brand-motto,
+  .home-page .home-nav.is-scrolled .nav-links a,
+  .home-page .home-nav.is-scrolled .mobile-nav-toggle {
+    color: #292929;
+  }
+  .brand-mark {
+    border-color: #292929;
+    background: #fff;
+  }
+  .site-nav .brand-mark {
+    border-color: #292929;
+    background: #fff;
+    box-shadow: 0 2px 8px #0002;
+  }
+  .site-nav .brand-crest,
+  .home-page .home-nav .brand-crest,
+  .home-page .home-nav.is-scrolled .brand-crest {
+    mix-blend-mode: normal;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible,
+  .home-page .home-nav .nav-links a:hover,
+  .home-page .home-nav.is-scrolled .nav-links a:hover {
+    color: #292929;
+    border-bottom-color: #292929;
+  }
+  .btn,
+  .cta-band {
+    background: var(--gold);
+    color: #292929;
+  }
+  .btn:hover {
+    background: #e5b600;
+  }
+  .btn-dark,
+  .section-dark,
+  .page-hero,
+  .recent-stories-section,
+  .public-card-section {
+    background-color: #686868;
+  }
+  .section-soft,
+  .home-page .home-events-section {
+    background: #f1f1ef;
+  }
+  .section-title,
+  .page-hero h1,
+  .home-page main > section h1,
+  .home-page main > section h2,
+  .home-page main > section h3,
+  .home-page .hero-home h1 {
+    color: var(--gold);
+  }
+  .public-page .section-title,
+  .public-page h1,
+  .public-page h2,
+  .public-page h3 {
+    color: var(--gold);
+  }
+  .home-page h1,
+  .home-page h2,
+  .home-page h3,
+  .home-page h4,
+  .public-page h1,
+  .public-page h2,
+  .public-page h3,
+  .public-page h4,
+  .home-page .section-title,
+  .public-page .section-title,
+  .home-page .content-card strong,
+  .public-page .content-card strong,
+  .home-page .value-card h3,
+  .public-page .value-card h3,
+  .home-page .stage-card h3,
+  .public-page .stage-card h3,
+  .home-page .quote-card strong,
+  .public-page .quote-card strong {
+    color: var(--gold) !important;
+    font-weight: 700;
+  }
+  .home-page .hero-home h1,
+  .public-page .page-hero h1 {
+    text-shadow: 0 2px 18px #0008;
+  }
+  .app-layout {
+    background: #f1f1ef;
+    color: #292929;
+  }
+  .app-layout .app-topbar {
+    background: #fff;
+    border-bottom-color: #d9d9d5;
+  }
+  .app-layout .app-main {
+    background: #f1f1ef;
+  }
+  .app-layout .panel,
+  .app-layout .stat-card,
+  .app-layout .content-card,
+  .app-layout .value-card,
+  .app-layout .stage-card,
+  .app-layout .quote-card,
+  .app-layout .student-home-grid {
+    border-color: #d9d9d5;
+    background: #fff !important;
+  }
+  .student-layout .app-sidebar {
+    background: linear-gradient(180deg, #f6c51c 0%, #d6ad17 100%);
+  }
+  .student-layout .app-sidebar .brand-name,
+  .student-layout .app-sidebar .brand-motto,
+  .student-layout .sidebar-caption,
+  .student-layout .sidebar-link,
+  .student-layout .sidebar-link .nav-icon {
+    color: #292929;
+  }
+  .student-layout .sidebar-link.active {
+    color: #292929;
+    background: #fff8d6;
+  }
+  .login-screen {
+    background: #f1f1ef;
+  }
+  .login-brand {
+    background: #686868;
+  }
+  .login-form-side,
+  .login-box {
+    background: #fff;
+  }
   .student-layout .app-content { padding: 16px 12px 28px; }
+  .student-search { width: 100%; height: 42px; margin-bottom: 14px; }
+  .student-search-button { width: 34px; height: 34px; }
   .student-home-grid main { padding: 0 15px 22px; }
   .student-profile-banner { margin: 0 -15px 20px; padding: 20px; }
   .student-banner-art { width: 78px; height: 70px; font-size: 30px; }
   .assignment-grid, .lesson-grid, .student-resource-grid { grid-template-columns: 1fr; }
+}
+
+/* Standard school colours for teacher and administrator portals. */
+.teacher-layout,
+.admin-layout {
+  --portal-primary: #f6c51c;
+  --portal-accent: #686868;
+  background: #f1f1ef;
+  color: #292929;
+}
+.teacher-layout .app-sidebar,
+.admin-layout .app-sidebar {
+  background: linear-gradient(180deg, #f6c51c 0%, #d6ad17 100%);
+  box-shadow: 8px 0 26px #29292938;
+}
+.teacher-layout .app-sidebar .brand-mark,
+.admin-layout .app-sidebar .brand-mark {
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px #29292935;
+}
+.teacher-layout .app-sidebar .brand-crest,
+.admin-layout .app-sidebar .brand-crest {
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: normal;
+}
+.teacher-layout .app-sidebar .brand-name,
+.teacher-layout .app-sidebar .brand-motto,
+.teacher-layout .sidebar-caption,
+.teacher-layout .sidebar-link,
+.teacher-layout .sidebar-link .nav-icon,
+.admin-layout .app-sidebar .brand-name,
+.admin-layout .app-sidebar .brand-motto,
+.admin-layout .sidebar-caption,
+.admin-layout .sidebar-link,
+.admin-layout .sidebar-link .nav-icon {
+  color: #292929;
+}
+.teacher-layout .sidebar-link:hover,
+.admin-layout .sidebar-link:hover,
+.teacher-layout .sidebar-link.active,
+.admin-layout .sidebar-link.active {
+  color: #292929;
+  background: #fff8d6;
+}
+.teacher-layout .app-main,
+.admin-layout .app-main {
+  background: #f1f1ef;
+}
+.teacher-layout .app-topbar,
+.admin-layout .app-topbar {
+  background: #fff;
+  border-bottom-color: #d9d9d5;
+  box-shadow: 0 3px 16px #2929290f;
+}
+.teacher-layout .app-heading h1,
+.admin-layout .app-heading h1,
+.teacher-layout .panel h2,
+.teacher-layout .panel h3,
+.admin-layout .panel h2,
+.admin-layout .panel h3,
+.teacher-layout .panel-header h2,
+.admin-layout .panel-header h2 {
+  color: #f6c51c;
+}
+.teacher-layout .panel,
+.teacher-layout .stat-card,
+.teacher-layout .content-card,
+.teacher-layout .value-card,
+.teacher-layout .stage-card,
+.teacher-layout .quote-card,
+.admin-layout .panel,
+.admin-layout .stat-card,
+.admin-layout .content-card,
+.admin-layout .value-card,
+.admin-layout .stage-card,
+.admin-layout .quote-card {
+  color: #292929;
+  border-color: #d9d9d5;
+  background: #fff !important;
+  box-shadow: 0 8px 22px #29292912;
+}
+.teacher-layout .panel p,
+.teacher-layout .panel-header p,
+.teacher-layout .stat-card .stat-label,
+.teacher-layout .stat-card .stat-note,
+.admin-layout .panel p,
+.admin-layout .panel-header p,
+.admin-layout .stat-card .stat-label,
+.admin-layout .stat-card .stat-note {
+  color: #686868 !important;
+}
+.teacher-layout .data-table th,
+.admin-layout .data-table th {
+  color: #292929;
+  background: #fff8d6;
+}
+.teacher-layout .data-table td,
+.admin-layout .data-table td {
+  border-top-color: #e2e2de;
+}
+.teacher-layout .data-table tbody tr:hover,
+.admin-layout .data-table tbody tr:hover {
+  background: #f7f7f4;
+}
+.teacher-layout .btn,
+.admin-layout .btn {
+  color: #292929;
+  background: #f6c51c;
+}
+.teacher-layout .btn:hover,
+.admin-layout .btn:hover {
+  background: #e5b600;
+}
+.teacher-layout .role-pill,
+.admin-layout .role-pill {
+  color: #292929;
+  background: #fff8d6;
+}
+
+/* Final public-page identity: consistent at desktop and mobile sizes. */
+.public-page {
+  background: #fff;
+  color: #292929;
+}
+.public-page .site-nav,
+.public-page .site-nav.is-scrolled {
+  background: #f6c51c !important;
+  border-bottom-color: #d5a900;
+  color: #292929;
+}
+.public-page .site-nav .brand-name,
+.public-page .site-nav .brand-motto,
+.public-page .site-nav .nav-links a,
+.public-page .site-nav .mobile-nav-toggle {
+  color: #292929;
+}
+.public-page .site-nav .brand-mark {
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px #29292933;
+}
+.public-page .site-nav .brand-crest {
+  mix-blend-mode: normal;
+}
+.public-page .site-nav .nav-links a:hover,
+.public-page .site-nav .nav-links a:focus-visible {
+  color: #292929;
+  border-bottom-color: #292929;
+}
+.public-page main {
+  background: #fff;
+}
+.public-page .page-hero {
+  background: linear-gradient(120deg, #292929, #686868);
+}
+.public-page .section-soft,
+.public-page .home-events-section {
+  background: #f1f1ef;
+}
+.public-page .section-dark,
+.public-page .recent-stories-section,
+.public-page .public-card-section {
+  background: linear-gradient(118deg, #292929 0%, #686868 62%, #b8940d 100%);
+}
+.public-page .section-title,
+.public-page .page-hero h1,
+.public-page h1,
+.public-page h2,
+.public-page h3,
+.public-page h4 {
+  color: #f6c51c !important;
+  font-weight: 700;
+}
+.public-page .section-subtitle,
+.public-page .page-hero p {
+  color: #686868;
+}
+.public-page .page-hero p,
+.public-page .section-dark .section-subtitle,
+.public-page .recent-stories-section .section-subtitle,
+.public-page .public-card-section .section-subtitle {
+  color: #f1f1ef;
+}
+.public-page .value-card,
+.public-page .stage-card,
+.public-page .content-card,
+.public-page .panel,
+.public-page .quote-card,
+.public-page .academic-group-card,
+.public-page .requirement-card {
+  border-color: #f6c51c;
+  background: #fff !important;
+  color: #292929;
+  box-shadow: 0 10px 26px #29292918;
+}
+.public-page .value-card p,
+.public-page .stage-card p,
+.public-page .content-card p,
+.public-page .panel p,
+.public-page .quote-card p,
+.public-page .academic-group-card p,
+.public-page .requirement-card p {
+  color: #686868;
+}
+.public-page .btn,
+.public-page .cta-band {
+  color: #292929;
+  background: #f6c51c;
+}
+.public-page .btn:hover {
+  background: #e5b600;
+}
+.btn.apply-now {
+  min-width: 176px;
+  min-height: 54px;
+  padding: 13px 28px 13px 34px;
+  border: 0;
+  border-radius: 32px 0 0 32px;
+  background: #202124;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 8px 18px #2021242b;
+}
+.btn.apply-now:hover,
+.btn.apply-now:focus-visible {
+  background: #38393b;
+  color: #fff;
+}
+.public-page .site-footer {
+  background: #292929;
+}
+.public-page .site-footer h3 {
+  color: #f6c51c;
+}
+
+/* Portal login branding remains black across student, teacher and administrator sign-in. */
+.login-screen {
+  background: #000;
+}
+.login-brand {
+  background: #000;
+  color: #fff;
+}
+.login-brand .brand-mark {
+  border-color: #fff;
+  background: #fff;
+}
+.login-brand .brand-crest {
+  mix-blend-mode: normal;
+}
+.login-brand .brand-name,
+.login-brand .brand-motto,
+.login-brand-copy h1 {
+  color: #f6c51c;
+}
+.login-brand-copy p,
+.login-brand footer {
+  color: #fff;
+}
+.login-brand .role-pill {
+  color: #292929;
+  background: #f6c51c;
+}
+.login-form-side {
+  background: #fff;
+}
+
+/* Keep people and faces visible in school photography. */
+.hero-slide {
+  background-image: linear-gradient(100deg, rgba(24, 24, 25, .18), rgba(24, 24, 25, .06) 58%, rgba(24, 24, 25, 0)), var(--slide-image);
+  background-position: center 38%;
+  filter: brightness(1.16) saturate(1.04);
+}
+.hero-slide-shade {
+  background: linear-gradient(0deg, rgba(15, 15, 15, .08), transparent 50%);
+}
+.stage-visual,
+.photo-placeholder {
+  background-position: center 28%;
+  filter: brightness(1.08) saturate(1.04);
+}
+.stage-visual::before,
+.photo-placeholder::before {
+  background: linear-gradient(0deg, rgba(29, 27, 25, .28), transparent 62%);
+}
+.about-intro {
+  background: #f1f1ef;
+}
+
+/* Keep portal authentication inside the same public-page shell as the main site. */
+.login-page {
+  background: #f1f1ef;
+}
+.login-page .login-screen {
+  width: min(1180px, calc(100% - 44px));
+  min-height: 600px;
+  margin: 0 auto;
+  padding: 54px 0 66px;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 24px;
+  background: transparent;
+}
+.login-page .login-brand,
+.login-page .login-form-side {
+  min-height: 520px;
+  border: 1px solid #d9d9d5;
+  border-radius: 14px;
+  box-shadow: 0 16px 35px #29292918;
+}
+.login-page .login-brand {
+  padding: 38px;
+  background: linear-gradient(145deg, #686868 0%, #292929 100%);
+}
+.login-page .login-brand .brand-name,
+.login-page .login-brand .brand-motto {
+  color: #fff;
+}
+.login-page .login-brand-copy h1 {
+  color: var(--gold);
+}
+.login-page .login-brand-copy p {
+  color: #f1f1ef;
+}
+.login-page .login-form-side {
+  padding: 34px;
+  background: #fff;
+}
+.login-page .login-box {
+  width: min(470px, 100%);
+  padding: 0;
+}
+.login-page .login-box h2 {
+  color: var(--gold) !important;
+}
+.login-page .login-box > p {
+  color: var(--muted);
+}
+.login-page .tabs {
+  background: #f1f1ef;
+}
+.login-page .tabs button.active {
+  color: #292929;
+  background: var(--gold);
+}
+.login-page .login-form-side .btn {
+  background: var(--gold);
+  color: #292929;
+}
+.login-page .login-form-side .btn:hover {
+  background: #e5b600;
+}
+.login-page .login-brand footer {
+  color: #f1f1ef;
+}
+@media (max-width: 760px) {
+  .login-page .login-screen {
+    width: min(100% - 28px, 560px);
+    grid-template-columns: 1fr;
+    padding: 28px 0 40px;
+  }
+  .login-page .login-brand,
+  .login-page .login-form-side {
+    min-height: auto;
+  }
+  .login-page .login-brand {
+    gap: 34px;
+  }
+}
+.about-intro .page-hero {
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(180deg, rgba(17, 25, 29, .08), rgba(17, 17, 17, .16)), url("../images/our-school.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .65);
 }

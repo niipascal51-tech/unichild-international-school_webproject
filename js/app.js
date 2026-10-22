@@ -6,6 +6,7 @@ const SCHOOL = {
   mapEmbedQuery: "5.6415081,-0.2759085",
   phone: "+233 244 891 066",
   admissionsPhone: "+233 558 636 562",
+  admissionsWhatsApp: "233249592576",
   email: "Unichildschool11@gmail.com",
   hours: "Monday–Friday, 6:30 AM–4:00 PM",
   establishedYear: 2012,
@@ -221,6 +222,7 @@ function readState() {
 let state = readState();
 Object.assign(SCHOOL, state.schoolSettings || {});
 let loginRole = new URLSearchParams(location.search).get("role") || "student";
+let demoSession = null;
 let toastTimer;
 let heroTimer;
 let heroSlideIndex = 0;
@@ -255,7 +257,7 @@ function toast(message, isError = false) {
 
 function brand(compact = false) {
   return `<a class="brand" href="index.html" aria-label="${escapeHtml(SCHOOL.name)} home">
-    <span class="brand-mark"><img class="brand-crest" src="images/logo.jpg" alt="" aria-hidden="true"></span>
+    <span class="brand-mark"><img class="brand-crest" src="images/logo.jpg" alt="Unichild International School crest"></span>
     <span class="brand-copy"><span class="brand-name"><span>Unichild</span><small>International School</small></span><span class="brand-motto">Words and Actions</span></span>
   </a>`;
 }
@@ -306,7 +308,7 @@ function publicFooter() {
     <div><h3>Quick Links</h3><a href="about.html">About Us</a><a href="admissions.html">Admissions</a><a href="events.html">School Calendar</a><a href="news.html">School News & Blog</a><a href="gallery.html">Photo Gallery</a></div>
     <div><h3>Contact & Location</h3><p>⌖ ${escapeHtml(SCHOOL.address)}</p><p>☎ ${escapeHtml(SCHOOL.phone)}<br>☎ ${escapeHtml(SCHOOL.admissionsPhone)}</p><p>✉ ${escapeHtml(SCHOOL.email)}</p><a class="footer-location-map" href="${SCHOOL.mapsUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open school location in maps"><iframe title="Unichild International School footer location map" src="https://www.google.com/maps?q=${mapQuery}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1"></iframe></a></div>
   </div><div class="footer-bottom"><span>© 2026 Unichild International School. All rights reserved.</span><span>Accra, Ghana</span></div></footer>
-  <a class="whatsapp-float" href="https://wa.me/233244891066" target="_blank" rel="noopener noreferrer" aria-label="Contact admissions on WhatsApp">
+  <a class="whatsapp-float" href="https://wa.me/${SCHOOL.admissionsWhatsApp}" target="_blank" rel="noopener noreferrer" aria-label="Contact admissions on WhatsApp">
     <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.84 11.84 0 0 0 12.06 0C5.52 0 .2 5.32.2 11.86c0 2.09.55 4.13 1.6 5.93L.1 24l6.36-1.67a11.84 11.84 0 0 0 5.6 1.42h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.14-3.43-8.39Zm-8.44 18.2h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.77.99 1.01-3.68-.23-.38a9.85 9.85 0 1 1 8.38 4.66Zm5.41-7.39c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.59-.5-.51-.68-.52h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.5 1.7.64.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
     <span>Admissions</span>
   </a>`;
@@ -435,7 +437,7 @@ function homePage() {
   </div><div class="hero-home-inner">
     <div class="hero-copy"><h1>Nurturing Young Minds Through Words & Actions</h1>
       <p>Unichild International School is committed to delivering a transformative education that empowers every learner to think independently, act with integrity, and shape a brighter future.</p>
-      <div class="hero-buttons"><a class="btn" href="admissions.html">Apply Now</a><a class="btn btn-outline" href="about.html">Explore Academics</a></div>
+      <div class="hero-buttons"><a class="btn apply-now" href="admissions.html">Apply Now</a><a class="btn btn-outline" href="about.html">Explore Academics</a></div>
     </div>
   </div><div class="hero-controls" aria-label="Slideshow controls">
     <button class="hero-arrow" type="button" data-action="hero-previous" aria-label="Previous slide">‹</button>
@@ -456,7 +458,7 @@ function homePage() {
   <section class="section section-soft home-events-section"><div class="container"><div class="page-toolbar"><div><span class="eyebrow">Mark your calendar</span><h2 class="section-title">Upcoming School Events</h2></div><a class="btn btn-small" href="events.html">View full calendar</a></div>
     <div class="grid-3">${state.events.slice(0, 3).map(item => `<div class="panel">${eventCard(item)}</div>`).join("")}</div></div></section>
   <section class="section public-card-section home-news-section"><div class="container">${sectionHeading("Latest updates", "News & Academic Blogs")}<div class="grid-3">${published.map(newsCard).join("")}</div></div></section>
-  <section class="cta-band home-admissions-band"><div class="container"><span class="eyebrow">Begin the journey</span><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Creche through Junior High School admissions are open for the 2026/2027 academic year. Contact our registrar to take the next step.</p><a class="btn btn-dark" href="admissions.html">Apply Now</a> <a class="btn btn-outline" href="admissions.html">Admission Requirements</a></div></section>
+  <section class="cta-band home-admissions-band"><div class="container"><span class="eyebrow">Begin the journey</span><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Creche through Junior High School admissions are open for the 2026/2027 academic year. Contact our registrar to take the next step.</p><a class="btn apply-now" href="admissions.html">Apply Now</a> <a class="btn btn-outline" href="admissions.html">Admission Requirements</a></div></section>
   <section class="section section-soft public-card-section home-testimonials-section"><div class="container">${sectionHeading("Families say", "What Parents Say About Us")}<div class="grid-2">
     <article class="quote-card"><span class="eyebrow">★★★★★</span><blockquote>“My child has become more confident and curious. The teachers care about both academic excellence and the character that shapes our young learners.”</blockquote><strong>Mrs. Ama Boateng</strong></article>
     <article class="quote-card"><span class="eyebrow">★★★★★</span><blockquote>“The balance of academic work and practical learning has really helped my child grow. We are grateful for the supportive environment.”</blockquote><strong>Mr. Samuel Mensah</strong></article>
@@ -477,7 +479,7 @@ function aboutPage() {
     <section class="section core-values-section"><div class="container">${sectionHeading("The code of conduct", "Our Core Values Detailed")}${valuesGrid()}</div></section>
     <section class="section section-soft faculty-leaders-section"><div class="container">${sectionHeading("Meet", "Our Leadership Team")}<div class="grid-4">
       ${[["Mrs. Evelyn Mensah", "Principal / Founder"], ["Mr. Ebenezer Osei", "Vice Principal"], ["Mrs. Cynthia Kwareng", "Head of Academics"], ["Mr. David Alabi", "Head of Administration"]].map(([name, role]) => `<article class="content-card"><div class="photo-placeholder"></div><div class="content-card-body"><h3>${name}</h3><p>${role}</p></div></article>`).join("")}</div></div></section>
-    <section class="cta-band"><div class="container"><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Join our school community and discover a place where every learner can thrive.</p><a class="btn btn-dark" href="admissions.html">Apply Now</a> <button class="btn btn-outline" data-action="print-page">Print About Us</button></div></section>`);
+    <section class="cta-band"><div class="container"><h2>Give Your Child the Foundation of Reason and Practice</h2><p>Join our school community and discover a place where every learner can thrive.</p><a class="btn apply-now" href="admissions.html">Apply Now</a></div></section>`);
 }
 
 function academicsPage() {
@@ -785,7 +787,7 @@ function getSession() {
     ? localStorage.getItem(BACKEND_TOKEN_KEY)
     : null;
   if (apiUser && apiToken) return apiUser;
-  if (typeof backendUser === "function") return null;
+  if (demoSession) return demoSession;
   const raw = localStorage.getItem(SESSION_KEY);
   if (!raw) return null;
   try {
@@ -799,6 +801,22 @@ function getSession() {
   }
 }
 
+function createDemoSession(role, email) {
+  if (role === "student") {
+    return { role, name: email, detail: "Student · JHS 1", studentId: 1 };
+  }
+  if (role === "teacher") {
+    const teacher = state.teachers.find(item => item.id === 1) || state.teachers[0];
+    return {
+      role,
+      name: teacher.name,
+      detail: `Class Teacher · ${teacher.classes[0] || "Primary 6"}`,
+      teacherId: teacher.id,
+    };
+  }
+  return { role: "admin", name: email, detail: "School Administrator" };
+}
+
 const PORTAL_PREFERENCES_KEY = "unichild-portal-preferences-v1";
 const DEFAULT_PORTAL_PREFERENCES = {
   notifications: true,
@@ -806,8 +824,8 @@ const DEFAULT_PORTAL_PREFERENCES = {
   announcements: true,
   language: "English",
   mode: "light",
-  primary: "#f6c51c",
-  accent: "#0756c9",
+  primary: "#e5b600",
+  accent: "#25364a",
   mix: 50,
 };
 
@@ -818,7 +836,10 @@ function preferenceUserKey(user) {
 function readPortalPreferences(user) {
   try {
     const saved = JSON.parse(localStorage.getItem(PORTAL_PREFERENCES_KEY) || "{}");
-    return { ...DEFAULT_PORTAL_PREFERENCES, ...(saved[preferenceUserKey(user)] || {}) };
+    const preferences = { ...DEFAULT_PORTAL_PREFERENCES, ...(saved[preferenceUserKey(user)] || {}) };
+    if (preferences.primary === "#f6e41e" || preferences.primary === "#f6c51c" || preferences.primary === "#ffd21f") preferences.primary = DEFAULT_PORTAL_PREFERENCES.primary;
+    if (preferences.accent === "#0756c9" || preferences.accent === "#28231b") preferences.accent = DEFAULT_PORTAL_PREFERENCES.accent;
+    return preferences;
   } catch (error) {
     console.error("Unable to read portal preferences:", error);
     return { ...DEFAULT_PORTAL_PREFERENCES };
@@ -843,6 +864,174 @@ function portalSettingsPage(user) {
     </form></section>`;
 }
 
+const PORTAL_TRANSLATIONS = {
+  French: {
+    "Workspace": "Espace de travail",
+    "Home": "Accueil",
+    "My Results": "Mes résultats",
+    "Tutorials": "Tutoriels",
+    "PTA Meetings": "Réunions de l'association de parents",
+    "Settings": "Paramètres",
+    "Log out": "Se déconnecter",
+    "Notifications": "Notifications",
+    "Open account menu": "Ouvrir le menu du compte",
+    "Search learning resources": "Rechercher des ressources d'apprentissage",
+    "What do you want to learn today?": "Que voulez-vous apprendre aujourd'hui ?",
+    "Set Goals": "Définir des objectifs",
+    "Hi Kwame,": "Bonjour Kwame,",
+    "You have completed": "Vous avez terminé",
+    "of your weekly targets. Keep learning with us like this.": "de vos objectifs hebdomadaires. Continuez à apprendre ainsi.",
+    "Lessons for you": "Leçons pour vous",
+    "Your Tasks Today": "Vos tâches du jour",
+    "October 2026": "Octobre 2026",
+    "Upload Assignment": "Déposer un devoir",
+    "Study for Quiz": "Réviser pour le contrôle",
+    "Paragraph Corrections": "Correction de paragraphes",
+    "Spell Check English": "Vérification orthographique en anglais",
+    "Refer a friend": "Recommander à un ami",
+    "Questions & Answers": "Questions et réponses",
+    "Multiple choice questions": "Questions à choix multiple",
+    "New revision": "Nouvelle révision",
+    "Focus Words": "Mots clés",
+    "Workshops": "Ateliers",
+    "Extra-Curricular": "Activités parascolaires",
+    "Welcome back,": "Bienvenue,",
+    "Your Profile": "Votre profil",
+    "Set Goals": "Définir des objectifs",
+    "Hi Kwame,": "Bonjour Kwame,",
+    "Unichild International School Student Portal": "Portail étudiant d'Unichild International School",
+    "Create New": "Créer",
+    "Your Assignments": "Vos devoirs",
+    "View More": "Voir plus",
+    "Lessons for you": "Leçons pour vous",
+    "Your Tasks Today": "Vos tâches du jour",
+    "Upload Assignment": "Déposer un devoir",
+    "Study for Quiz": "Réviser pour le contrôle",
+    "Paragraph Corrections": "Correction de paragraphes",
+    "Spell Check English": "Vérification orthographique en anglais",
+    "Create New": "Créer",
+    "Refer a friend": "Recommander à un ami",
+    "Portal Preferences": "Préférences du portail",
+    "These settings are saved for your account in this browser.": "Ces paramètres sont enregistrés pour votre compte dans ce navigateur.",
+    "Notifications": "Notifications",
+    "School announcements": "Annonces de l'école",
+    "Receive important notices from Unichild.": "Recevez les informations importantes d'Unichild.",
+    "Assignment reminders": "Rappels de devoirs",
+    "Get reminders about tutorials and learning tasks.": "Recevez des rappels pour les tutoriels et les activités d'apprentissage.",
+    "General notifications": "Notifications générales",
+    "Allow portal alerts and activity updates.": "Autorisez les alertes et les mises à jour du portail.",
+    "Language": "Langue",
+    "Portal language": "Langue du portail",
+    "Theme and colors": "Thème et couleurs",
+    "Primary color": "Couleur principale",
+    "Accent color": "Couleur d'accent",
+    "Mix primary and accent colors": "Mélanger les couleurs principale et d'accent",
+    "Theme preview": "Aperçu du thème",
+    "Colors blend to match your preference.": "Les couleurs se combinent selon votre préférence.",
+    "Light mode": "Mode clair",
+    "Dark mode": "Mode sombre",
+    "Save Preferences": "Enregistrer les préférences",
+    "Manage Preferences": "Gérer les préférences",
+    "View Profile": "Voir le profil",
+    "Account Menu": "Menu du compte",
+    "Student Portal": "Portail étudiant",
+    "Teacher Portal": "Portail enseignant",
+    "Operations Portal": "Portail des opérations",
+    "Student": "Étudiant",
+    "Teacher": "Enseignant",
+    "Administrator": "Administrateur",
+  },
+  Twi: {
+    "Workspace": "Adwumayɛbea",
+    "Home": "Fie",
+    "My Results": "Me nsɔhwɛ aba",
+    "Tutorials": "Nkyerɛkyerɛ",
+    "PTA Meetings": "Awofoɔ ne akyerɛkyerɛfoɔ nhyiam",
+    "Settings": "Nhyehyɛe",
+    "Log out": "Fi mu",
+    "Notifications": "Amanneɛbɔ",
+    "Open account menu": "Bue akawnt menu",
+    "Search learning resources": "Hwehwɛ adesua nneɛma",
+    "What do you want to learn today?": "Dɛn na wopɛ sɛ wusua nnɛ?",
+    "Your Profile": "Wo ho nsɛm",
+    "Set Goals": "Yɛ botae",
+    "Hi Kwame,": "Akyena Kwame,",
+    "You have completed": "Woawie",
+    "of your weekly targets. Keep learning with us like this.": "wo nnawɔtwe botae. Kɔ so sua sɛnea ɛte yi.",
+    "October 2026": "Ahinime 2026",
+    "Questions & Answers": "Nsɛmmisa ne mmuae",
+    "Multiple choice questions": "Nsɛmmisa a wɔpaw mmuae",
+    "New revision": "Adesua foforo",
+    "Focus Words": "Nsɛm titiriw",
+    "Workshops": "Nkyerɛkyerɛ nhyiam",
+    "Extra-Curricular": "Adesua foforo akyi",
+    "Unichild International School Student Portal": "Unichild International School osuafoɔ portal",
+    "Create New": "Yɛ foforo",
+    "Your Assignments": "Wo nnwuma",
+    "View More": "Hwɛ pii",
+    "Lessons for you": "Adesua ma wo",
+    "Your Tasks Today": "Wo nnwuma nnɛ",
+    "Upload Assignment": "Fa adwuma kɔ soro",
+    "Study for Quiz": "Sua nsɔhwɛ no",
+    "Create New": "Yɛ foforo",
+    "Refer a friend": "Kyerɛ adamfo",
+    "Portal Preferences": "Portal nhyehyɛe",
+    "These settings are saved for your account in this browser.": "Wɔde nhyehyɛe yi sie wo akawnt wɔ browser yi mu.",
+    "School announcements": "Sukuul amanneɛbɔ",
+    "Receive important notices from Unichild.": "Nya amanneɛbɔ a ɛho hia fi Unichild.",
+    "Assignment reminders": "Nnwuma nkae",
+    "Get reminders about tutorials and learning tasks.": "Nya nkaeɛ ma nkyerɛkyerɛ ne adesua nnwuma.",
+    "General notifications": "Amanneɛbɔ nyinaa",
+    "Allow portal alerts and activity updates.": "Ma portal amanneɛbɔ ne nsakraeɛ nyɛ adwuma.",
+    "Language": "Kasa",
+    "Portal language": "Portal kasa",
+    "Theme and colors": "Nsusuwso ne kɔla",
+    "Primary color": "Kɔla titiriw",
+    "Accent color": "Kɔla a ɛboa",
+    "Mix primary and accent colors": "Fa kɔla titiriw ne kɔla a ɛboa fra",
+    "Theme preview": "Nsusuwso nhwɛso",
+    "Colors blend to match your preference.": "Kɔla no fra sɛnea wopɛ.",
+    "Light mode": "Kɔla hann",
+    "Dark mode": "Kɔla sum",
+    "Save Preferences": "Sie nhyehyɛe",
+    "Manage Preferences": "Hwɛ nhyehyɛe",
+    "View Profile": "Hwɛ wo ho nsɛm",
+    "Account Menu": "Akawnt menu",
+    "Student Portal": "Osuafoɔ portal",
+    "Teacher Portal": "Ɔkyerɛkyerɛfoɔ portal",
+    "Operations Portal": "Adwumayɛ portal",
+    "Student": "Osuafoɔ",
+    "Teacher": "Ɔkyerɛkyerɛfoɔ",
+    "Administrator": "Ɔhwɛfoɔ",
+  },
+};
+
+function translatePortal(root, language) {
+  const translations = PORTAL_TRANSLATIONS[language];
+  if (!translations) return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  textNodes.forEach(node => {
+    const value = node.nodeValue.trim();
+    if (language === "French" && value.startsWith("Welcome back,")) node.nodeValue = node.nodeValue.replace("Welcome back,", "Bienvenue,");
+    else if (language === "Twi" && value.startsWith("Welcome back,")) node.nodeValue = node.nodeValue.replace("Welcome back,", "Yɛma wo akwaaba,");
+    else {
+      Object.entries(translations)
+        .sort(([left], [right]) => right.length - left.length)
+        .forEach(([source, target]) => {
+          if (node.nodeValue.includes(source)) node.nodeValue = node.nodeValue.replaceAll(source, target);
+        });
+    }
+  });
+  root.querySelectorAll("[aria-label], [placeholder], [title]").forEach(element => {
+    ["aria-label", "placeholder", "title"].forEach(attribute => {
+      const value = element.getAttribute(attribute);
+      if (value && translations[value]) element.setAttribute(attribute, translations[value]);
+    });
+  });
+}
+
 function portalShell(user, tab, content) {
   const items = portalMenu(user.role);
   const portalName = user.role === "admin" ? "Operations Portal" : `${user.role[0].toUpperCase()}${user.role.slice(1)} Portal`;
@@ -854,8 +1043,8 @@ function portalShell(user, tab, content) {
   </aside><div class="app-main"><header class="app-topbar">
     <div class="topbar-main"><button class="menu-button" data-action="sidebar-toggle" aria-label="Open menu">☰</button>
       <div class="app-heading"><h1>${escapeHtml(tabLabel(user.role, tab))}</h1><p>Unichild International School ${portalName}</p></div></div>
-    <div class="topbar-tools"><span class="date-label">${new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "short", year: "numeric" })}</span>
-      <button class="icon-button" aria-label="Notifications" data-action="show-notifications">♧<span class="notification-dot"></span></button>
+    <div class="topbar-tools"><span class="date-label">${new Date().toLocaleDateString(readPortalPreferences(user).language === "French" ? "fr-FR" : readPortalPreferences(user).language === "Twi" ? "ak-GH" : "en-GB", { weekday: "long", day: "numeric", month: "short", year: "numeric" })}</span>
+      <button class="icon-button notification-button" aria-label="Notifications" data-action="show-notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg><span class="notification-dot"></span></button>
       <button type="button" class="topbar-account" data-action="account-menu" aria-label="Open account menu">${avatarMarkup(user)}</button></div>
   </header><main class="app-content">${content}</main><footer class="copyright">© 2026 Unichild International School Portal. Demo data is stored in this browser.</footer></div></div>`;
 }
@@ -1140,12 +1329,12 @@ function studentPortal(user, tab) {
       ["Midyear History", "New revision", `${Math.min(99, Math.max(40, average || 80))}%`, "blue"],
     ];
     return `<div class="student-home">
-      <div class="student-search"><span>⌕</span><input placeholder="What do you want to learn today?" aria-label="Search learning resources"><span class="student-search-icon">⌕</span></div>
+      <div class="student-search"><input data-student-search placeholder="What do you want to learn today?" aria-label="Search learning resources"><button type="button" class="student-search-button" data-action="student-search" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button></div>
       <div class="student-home-grid"><main>
         <section class="student-profile-banner"><div><span class="student-eyebrow">Your Profile</span><h2>Hi ${escapeHtml(student.name.split(" ")[0])},</h2><p>You have completed <strong>${Math.min(100, Math.max(70, average || 70))}%</strong> of your weekly targets. Keep learning with us like this.</p><a class="student-yellow-button" href="#profile">Set Goals</a></div><div class="student-banner-art" aria-hidden="true">⌨<br><span>★</span></div></section>
-        <section class="student-section"><div class="student-section-heading"><h2>Your Assignments</h2><a href="#results">View More</a></div><div class="assignment-grid">${assignmentCards.map(([title, subtitle, progress, color]) => `<a class="assignment-card assignment-${color}" href="#results"><span class="assignment-symbol">${color === "coral" ? "◎" : color === "green" ? "△" : "◉"}</span><strong>${title}</strong><small>${subtitle}</small><span class="assignment-progress"><i style="width:${String(progress).replace("%", "")}%"></i></span><em>${progress}</em></a>`).join("")}</div></section>
-        <section class="student-section"><div class="student-section-heading"><h2>Lessons for you</h2><a href="#announcements">View More</a></div><div class="lesson-grid"><a class="lesson-card lesson-yellow" href="#announcements"><strong>Focus Words</strong><small>English</small><span>▤</span></a><a class="lesson-card lesson-coral" href="#announcements"><strong>Workshops</strong><small>Extra-Curricular</small><span>♟</span></a></div></section>
-      </main><aside class="student-right-panel"><div class="student-mini-header"><span>✉</span>${avatarMarkup(user)}</div><div class="student-calendar"><strong>October 2026</strong><div class="calendar-grid">${["S", "M", "T", "W", "T", "F", "S", "", "", "", "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"].map(day => `<span class="${day === "21" ? "today" : ""}">${day}</span>`).join("")}</div></div><div class="student-tasks"><h3>Your Tasks Today</h3>${[["Upload Assignment", "yellow"], ["Study for Quiz", "green"], ["Paragraph Corrections", "purple"], ["Spell Check English", "red"]].map(([task, color]) => `<div class="student-task task-${color}">${task}</div>`).join("")}<button class="student-create-task" type="button">＋ Create New</button></div><div class="student-refer"><strong>Refer a friend</strong><span>🎓</span></div></aside></div>
+        <section class="student-section"><div class="student-section-heading"><h2>Your Assignments</h2><a href="#results">View More</a></div><div class="assignment-grid">${assignmentCards.map(([title, subtitle, progress, color]) => `<a class="assignment-card assignment-${color}" data-search-card href="#results"><span class="assignment-symbol">${color === "coral" ? "◎" : color === "green" ? "△" : "◉"}</span><strong>${title}</strong><small>${subtitle}</small><span class="assignment-progress"><i style="width:${String(progress).replace("%", "")}%"></i></span><em>${progress}</em></a>`).join("")}</div></section>
+        <section class="student-section"><div class="student-section-heading"><h2>Lessons for you</h2><a href="#announcements">View More</a></div><div class="lesson-grid"><a class="lesson-card lesson-yellow" data-search-card href="#announcements"><strong>Focus Words</strong><small>English</small><span>▤</span></a><a class="lesson-card lesson-coral" data-search-card href="#announcements"><strong>Workshops</strong><small>Extra-Curricular</small><span>♟</span></a></div><p class="student-search-status" data-search-status hidden>No matching learning resources found.</p></section>
+      </main><aside class="student-right-panel"><div class="student-calendar"><strong>October 2026</strong><div class="calendar-grid">${["S", "M", "T", "W", "T", "F", "S", "", "", "", "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"].map(day => `<span class="${day === "21" ? "today" : ""}">${day}</span>`).join("")}</div></div><div class="student-tasks"><h3>Your Tasks Today</h3>${[["Upload Assignment", "yellow"], ["Study for Quiz", "green"], ["Paragraph Corrections", "purple"], ["Spell Check English", "red"]].map(([task, color]) => `<div class="student-task task-${color}">${task}</div>`).join("")}<button class="student-create-task" type="button">＋ Create New</button></div><div class="student-refer"><strong>Refer a friend</strong><span>🎓</span></div></aside></div>
     </div>`;
   }
   return `${welcomeBlock(user, `${student.className} · Student ID ${student.studentId} · Term 1`)}
@@ -1187,22 +1376,22 @@ function loginPage() {
   const eyeIcon = hidden => hidden
     ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path><circle cx="12" cy="12" r="2.5"></circle><path d="m4 4 16 16"></path></svg>`
     : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path><circle cx="12" cy="12" r="2.5"></circle></svg>`;
-  return `<main class="login-screen"><section class="login-brand">${brand()}<div class="login-brand-copy"><h1>Lógia Kai<br>Práxeis.</h1><p>Unlocking the potential in our future Leaders one day at a time.</p><div class="action-row"><span class="role-pill">GES Accredited</span><span class="role-pill">Est. 2012</span></div></div>
+  return `<div class="public-page login-page">${publicHeader("login")}<main class="login-screen"><section class="login-brand">${brand()}<div class="login-brand-copy"><h1>Lógia Kai<br>Práxeis.</h1><p>Unlocking the potential in our future Leaders one day at a time.</p><div class="action-row"><span class="role-pill">GES Accredited</span><span class="role-pill">Est. 2012</span></div></div>
       <footer>© 2026 Unichild School Management Operations. All rights reserved.</footer></section>
       <section class="login-form-side"><div class="login-box"><h2>Welcome Back</h2><p>Sign in to access your school portal workspace.</p>
         <div class="tabs" role="tablist">${roles.map(([role, label]) => `<button type="button" class="${loginRole === role ? "active" : ""}" data-action="select-role" data-role="${role}">${label}</button>`).join("")}</div>
         <form class="form-stack" data-form="login"><div class="field"><label for="login-username">Email address</label><input id="login-username" name="username" type="email" autocomplete="username" placeholder="name@example.com" required></div>
           <div class="field"><label for="login-password">Password</label><div class="password-field"><input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required><button class="password-toggle" type="button" data-action="toggle-password" aria-label="Show password" aria-pressed="false">${eyeIcon(true)}</button></div><a class="forgot-password" href="#forgot-password" data-action="forgot-password">Forgot password?</a></div>
           <button class="btn" type="submit" style="width:100%;padding:13px">Sign In</button></form>
-        <p class="login-hint">Demo only: enter any non-empty username and password. No real account is created.</p><p class="login-hint">Need help? <a class="login-support-link" href="mailto:${encodeURIComponent(SCHOOL.email)}">Contact the school</a> at <a class="login-support-link" href="mailto:${encodeURIComponent(SCHOOL.email)}">${escapeHtml(SCHOOL.email)}</a></p>
-      </div></section></main>`;
+        <p class="login-hint">Use the school account provided to you. If the backend is unavailable, the local demo sign-in remains available for previewing the portal.</p><p class="login-hint">Need help? <a class="login-support-link" href="mailto:${encodeURIComponent(SCHOOL.email)}">Contact the school</a> at <a class="login-support-link" href="mailto:${encodeURIComponent(SCHOOL.email)}">${escapeHtml(SCHOOL.email)}</a></p>
+      </div></section></main>${publicFooter()}</div>`;
 }
 
 function rolePortalPage(role, tab) {
   const user = getSession();
   if (!user || user.role !== role) {
-    return `<main class="login-screen"><section class="login-brand">${brand()}<div class="login-brand-copy"><h1>${role === "admin" ? "Operations" : `${role[0].toUpperCase()}${role.slice(1)}`} Portal</h1><p>Sign in to open the Unichild International School workspace.</p></div><footer>© 2026 Unichild International School</footer></section>
-      <section class="login-form-side"><div class="login-box"><h2>Portal Sign In</h2><p>Choose the matching role to access this portal.</p><a class="btn" href="login.html?role=${role}">Continue to secure demo sign in</a></div></section></main>`;
+    return `<div class="public-page login-page">${publicHeader("login")}<main class="login-screen"><section class="login-brand">${brand()}<div class="login-brand-copy"><h1>${role === "admin" ? "Operations" : `${role[0].toUpperCase()}${role.slice(1)}`} Portal</h1><p>Sign in to open the Unichild International School workspace.</p></div><footer>© 2026 Unichild International School</footer></section>
+      <section class="login-form-side"><div class="login-box"><h2>Portal Sign In</h2><p>Choose the matching role to access this portal.</p><a class="btn" href="login.html?role=${role}">Continue to secure demo sign in</a></div></section></main>${publicFooter()}</div>`;
   }
   const safeTab = portalMenu(role).some(item => item[0] === tab) ? tab : portalMenu(role)[0][0];
   const content = role === "admin" ? adminPage(safeTab, user) : role === "student" ? studentPortal(user, safeTab) : teacherPortal(user, safeTab);
@@ -1227,6 +1416,9 @@ function render() {
     const user = getSession();
     document.title = `${user && user.role === role ? tabLabel(role, tab) : "Portal Sign In"} | ${SCHOOL.name}`;
     root.innerHTML = rolePortalPage(role, tab);
+    if (user && user.role === role) {
+      translatePortal(root, readPortalPreferences(user).language);
+    }
   } else {
     document.title = `${titleMap[page] || "Home"} | ${SCHOOL.name}`;
     const pages = {
@@ -1366,6 +1558,14 @@ function showModal(title, content) {
   backdrop.querySelector("input,button")?.focus();
 }
 
+function showNotifications(user) {
+  const announcements = state.news.filter(item => item.status === "Published").slice(0, 3);
+  const items = announcements.length
+    ? announcements.map(item => `<article class="notification-item"><strong>${escapeHtml(item.title)}</strong><small>${dateText(item.date)}</small><p>${escapeHtml(item.body)}</p></article>`).join("")
+    : `<p class="muted">You are all caught up.</p>`;
+  showModal("Notifications", `<div class="notification-list">${items}</div><div class="modal-foot"><a class="btn btn-outline" href="#announcements" data-action="close-modal">View all announcements</a><button class="btn" type="button" data-action="close-modal">Done</button></div>`);
+}
+
 function openAccountModal(student) {
   showModal("Create student account", `<form class="form-stack" data-form="account" data-student-id="${student.id}">
     <p>Create a login only after the student has been admitted.</p><div class="field"><label>Student</label><input value="${escapeHtml(student.name)} · ${escapeHtml(student.studentId)}" readonly></div>
@@ -1472,6 +1672,20 @@ function applySearch(searchInput) {
   });
 }
 
+function applyStudentSearch() {
+  const input = document.querySelector("[data-student-search]");
+  if (!input) return;
+  const query = input.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll("[data-search-card]").forEach(card => {
+    const matches = !query || card.textContent.toLowerCase().includes(query);
+    card.hidden = !matches;
+    if (matches) visible += 1;
+  });
+  const status = document.querySelector("[data-search-status]");
+  if (status) status.hidden = !query || visible > 0;
+}
+
 function applyFilters() {
   const classFilter = document.querySelector("[data-filter-class]");
   const statusFilter = document.querySelector("[data-filter-status]");
@@ -1506,14 +1720,31 @@ document.addEventListener("submit", async event => {
   try {
     switch (form.dataset.form) {
       case "login": {
-        const user = await backendLogin(data.username, data.password);
+        let user;
+        let usingDemoFallback = false;
+        try {
+          user = await backendLogin(data.username, data.password);
+        } catch (error) {
+          if (!error.message.startsWith("The school server is unavailable at ")) throw error;
+          user = createDemoSession(loginRole, data.username);
+          demoSession = user;
+          localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+          usingDemoFallback = true;
+        }
         const expectedRole = loginRole === "admin" ? "admin" : loginRole;
         if (user.role !== expectedRole) {
           clearBackendSession();
+          localStorage.removeItem(SESSION_KEY);
           throw new Error(`This is a ${user.role} account. Choose the matching portal role.`);
         }
-        localStorage.removeItem(SESSION_KEY);
         const destination = user.role === "admin" ? "admin-dashboard.html" : `${user.role}-portal.html`;
+        if (usingDemoFallback) {
+          document.body.dataset.page = user.role === "admin" ? "admin-dashboard" : `${user.role}-portal`;
+          history.replaceState(null, "", `${destination}#dashboard`);
+          render();
+          return;
+        }
+        localStorage.removeItem(SESSION_KEY);
         location.href = `${destination}#dashboard`;
         return;
       }
@@ -1778,7 +2009,10 @@ document.addEventListener("click", event => {
     localStorage.removeItem(SESSION_KEY);
     location.href = "login.html";
   } else if (action === "show-notifications") {
-    toast("You are all caught up.");
+    const session = getSession();
+    if (session) showNotifications(session);
+  } else if (action === "student-search") {
+    applyStudentSearch();
   } else if (action === "jump-form") {
     document.querySelector("#register-panel")?.scrollIntoView({ behavior: "smooth", block: "center" });
     document.querySelector('#register-panel input[name="name"]')?.focus({ preventScroll: true });
@@ -1905,6 +2139,7 @@ document.addEventListener("click", event => {
 
 document.addEventListener("input", event => {
   if (event.target.matches("[data-search]")) applySearch(event.target);
+  if (event.target.matches("[data-student-search]")) applyStudentSearch();
   if (event.target.matches('[data-search="student-table"]')) applyFilters();
 });
 document.addEventListener("change", event => {

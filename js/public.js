@@ -1,14 +1,14 @@
 const NAV=[['home','Home'],['about','About Us'],['academics','Academics'],['admissions','Admissions'],['news','News &amp; Blog'],['events','Events'],['departments','Departments'],['games','Games &amp; Competitions'],['gallery','Gallery'],['contact','Contact Us']];
 const cur=()=>document.body.dataset.page||'home';
 
-const shell=h=>`<div class="strip"><span>+233 244 891 066 · Unichildschool11@gmail.com · Mon to Fri 6:30 AM to 4:00 PM</span><a href="https://wa.me/233244891066">Chat with Registrar</a></div>
+const shell=h=>`<div class="strip"><span>+233 244 891 066 · Unichildschool11@gmail.com · Mon to Fri 6:30 AM to 4:00 PM</span><a href="https://wa.me/233249592576">Chat with Registrar</a></div>
 <header class="top"><a class="logo" href="#/home">UNICHILD<small>Lógia Kai Práxeis</small></a>
 <nav>${NAV.map(([k,v])=>`<a class="${k===cur()?'on':''}" href="#/${k}">${v}</a>`).join('')}</nav><a class="btn" href="#/login">Portal login</a></header>${h}
 <footer class="foot"><div><div class="logo">UNICHILD</div><p>Nurturing global citizens equipped with academic mastery and outstanding character.</p></div>
 <div><h3>Academics</h3><a href="#/academics">Creche and Nursery</a><a href="#/academics">Kindergarten</a><a href="#/academics">Primary School</a><a href="#/academics">Junior High School</a></div>
 <div><h3>Quick links</h3><a href="#/about">About Us</a><a href="#/admissions">Admissions</a><a href="#/news">News and Blog</a><a href="#/gallery">Photo Gallery</a></div>
 <div><h3>Contact</h3><p>JPRF+JJ2 Unichild International School, Sowutoum, Accra, Ghana<br>+233 244 891 066 / +233 501 234 567<br>Unichildschool11@gmail.com</p><a href="https://maps.app.goo.gl/bRkfAQMwGThSGzYW8?g_st=aw" target="_blank" rel="noopener noreferrer">Open location in Google Maps</a></div></footer>
-<a class="wa" href="https://wa.me/233244891066">Admissions WhatsApp</a>`;
+<a class="wa" href="https://wa.me/233249592576">Admissions WhatsApp</a>`;
 
 const hero=(t,s,tag)=>`<section class="hero img">${tag?`<small>${tag}</small>`:''}<h1>${t}</h1>${s?`<p>${s}</p>`:''}</section>`;
 const sec=(title,inner,alt)=>`<section class="sec ${alt?'alt':''}"><div class="wrap"><h2>${title}</h2><div class="bar"></div>${inner}</div></section>`;

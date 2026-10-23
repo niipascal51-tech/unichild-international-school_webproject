@@ -166,6 +166,36 @@ https://github.com/niipascal51-tech/unichild-international-school_webproject
 
 **Deployed website:**  
 https://zealous-flower-03357b203.4.azurestaticapps.net
+ 
+
+ # Slide 16 — Project Evidence and Release
+
+**GitHub Repository:**  
+https://github.com/niipascal51-tech/unichild-international-school_webproject
+
+**Main Branch:** `main`
+
+**D9 Release Tag:** `v1.0-demo`
+
+**Tagged Commit:** `93012d5` — `docs: prepare D9 final demo and handoff`
+
+**Release Tag Link:**  
+https://github.com/niipascal51-tech/unichild-international-school_webproject/tree/v1.0-demo
+
+**Deployed Frontend:**  
+https://zealous-flower-03357b203.4.azurestaticapps.net
+
+**Backend Health Check:**  
+https://unichildinternationalschoolbackend-bfg4hwd8fpduavgp.westus3-01.azurewebsites.net/api/health
+
+**Handoff Documents:**
+- Client Handoff
+- User Manual
+- Deployment and Operations Guide
+
+**Demo Video:** Unlisted YouTube link pending upload.
+
+**Project Board:** Add the team's actual project board URL before the presentation.
 
 **Final message:**  
 The project provides an online school website and a foundation for student information management. The next priority is to verify the complete user workflows, finalise the handoff evidence and document the remaining limitations transparently.

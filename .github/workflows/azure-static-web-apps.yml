@@ -2,7 +2,7 @@ name: Deploy frontend to Azure Static Web Apps
 
 on:
   push:
-    branches:bright-frontend
+    branches: [bright-frontend]
       - main
   workflow_dispatch:
 
